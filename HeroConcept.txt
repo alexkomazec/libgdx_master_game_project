@@ -1,0 +1,46 @@
+COMMON FOR ALL THE HERO CLASSES:
+    -Health Points
+    -Damage
+    -Energy
+    -Movement Speed
+    -Special Magic
+    -Weapon
+
+    -Attack with weapon
+    -Attack with special magic
+    
+ACCORDING TO CLASSES:
+
+1.WARRIOR:
+    -Health Points 150%
+    -Damage 100%
+    -Energy 80%
+    -Movement Speed 70%
+    -Special Magic (Fury attack)
+    -Weapon (sword)
+
+    -Attack with a sword
+    -Attack with special magic (Using Fury attack)
+
+2.MAGE:
+    -Health Points 70%
+    -Damage 130%
+    -Energy 100%
+    -Movement Speed 120%
+    -Special Magic (Blue Laguna)
+    -Weapon (staff)
+
+    -Attack with a staff
+    -Attack with special magic (Blue Laguna)
+
+3.ARCHER:
+    -Health Points 80%
+    -Damage 130%
+    -Energy 70%
+    -Movement Speed 100%
+    -Special Magic (Piercing shot)
+    -Weapon (bow)
+
+
+    -Attack with a bow
+    -Attack with special magic (Piercing shot)

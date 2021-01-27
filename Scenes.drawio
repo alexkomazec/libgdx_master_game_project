@@ -1,0 +1,439 @@
+<mxfile host="65bd71144e" modified="2021-01-27T21:11:28.795Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.52.1 Chrome/83.0.4103.122 Electron/9.3.5 Safari/537.36" version="13.10.0" etag="IAQAvSzt16fPYua8CysC" type="embed">
+    <diagram id="eMU_mlaN2lheY5ZQrt8L" name="Scenes">
+        <mxGraphModel dx="1830" dy="555" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="11" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#99FFFF;" vertex="1" parent="1">
+                    <mxGeometry x="40" y="80" width="230" height="260" as="geometry"/>
+                </mxCell>
+                <mxCell id="3" value="MAIN MENU SCENE" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="40" y="30" width="230" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="6" value="START GAME" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="50" y="100" width="210" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="7" value="SET DIFFICULTY" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="50" y="160" width="210" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="10" value="OPTIONS" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="50" y="220" width="210" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="13" value="EXIT" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="50" y="280" width="210" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="16" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFF99;" vertex="1" parent="1">
+                    <mxGeometry x="40" y="410" width="230" height="260" as="geometry"/>
+                </mxCell>
+                <mxCell id="18" value="CHOOSE NUMBER OF PLAYERS SCENE" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="40" y="360" width="230" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="25" value="2 Players - MultiPlayer - Online" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="50" y="480" width="210" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="26" value="1 Player - Single player" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="50" y="430" width="210" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="32" value="" style="group" vertex="1" connectable="0" parent="1">
+                    <mxGeometry x="1080" y="360" width="230" height="310" as="geometry"/>
+                </mxCell>
+                <mxCell id="29" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFF99;" vertex="1" parent="32">
+                    <mxGeometry y="50" width="230" height="260" as="geometry"/>
+                </mxCell>
+                <mxCell id="30" value="LOADING RESORCES SCENE" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="32">
+                    <mxGeometry width="230" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="39" value="LOADING..." style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="32">
+                    <mxGeometry x="55" y="140" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="284" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#CC99FF;" vertex="1" parent="1">
+                    <mxGeometry x="40" y="1440" width="230" height="330" as="geometry"/>
+                </mxCell>
+                <mxCell id="286" value="EXIT SCENE" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="40" y="1440" width="230" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="287" value="Image" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="102.5" y="1570" width="100" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="303" value="" style="group" vertex="1" connectable="0" parent="1">
+                    <mxGeometry x="285" y="30" width="225" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="300" value="&lt;br&gt;Welcome screen of the game" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="303">
+                    <mxGeometry y="60" width="225" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="302" value="DESCRIPTION" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="303">
+                    <mxGeometry width="225" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="307" value="" style="group" vertex="1" connectable="0" parent="1">
+                    <mxGeometry x="290" y="360" width="225" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="308" value="Displayed when START GAME is clicked&lt;br&gt;There is a COOP posibility" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="307">
+                    <mxGeometry y="60" width="225" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="309" value="DESCRIPTION" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="307">
+                    <mxGeometry width="225" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="319" value="" style="group" vertex="1" connectable="0" parent="1">
+                    <mxGeometry x="40" y="710" width="230" height="310" as="geometry"/>
+                </mxCell>
+                <mxCell id="213" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#66FF66;" vertex="1" parent="319">
+                    <mxGeometry y="50" width="230" height="260" as="geometry"/>
+                </mxCell>
+                <mxCell id="318" value="" style="group" vertex="1" connectable="0" parent="319">
+                    <mxGeometry width="230" height="255" as="geometry"/>
+                </mxCell>
+                <mxCell id="214" value="SET DIFFICULTY SCENE" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="318">
+                    <mxGeometry width="230" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="215" value="EASY" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="318">
+                    <mxGeometry x="10" y="75" width="210" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="216" value="NORMAL" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="318">
+                    <mxGeometry x="10" y="145" width="210" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="217" value="HARD" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="318">
+                    <mxGeometry x="10" y="215" width="210" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="329" value="&lt;span&gt;DIFFICULTY SCENES&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="-230" y="710" width="230" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="331" value="START GAME SCENES" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="-230" y="360" width="230" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="333" value="MAIN MENU SCENES" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="-230" y="30" width="230" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="348" value="" style="group" vertex="1" connectable="0" parent="1">
+                    <mxGeometry x="290" y="710" width="225" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="321" value="Displayed when SET DIFFICULTY is clicked" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="348">
+                    <mxGeometry y="60" width="225" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="322" value="DESCRIPTION" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="348">
+                    <mxGeometry width="225" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="351" value="" style="group" vertex="1" connectable="0" parent="1">
+                    <mxGeometry x="290" y="850" width="115" height="115" as="geometry"/>
+                </mxCell>
+                <mxCell id="339" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="351">
+                    <mxGeometry y="5" width="110" height="110" as="geometry"/>
+                </mxCell>
+                <mxCell id="347" value="" style="group" vertex="1" connectable="0" parent="351">
+                    <mxGeometry y="35" width="115" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="343" value="&lt;span&gt;Enemy DPS: 70%&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="347">
+                    <mxGeometry width="115" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="344" value="&lt;span&gt;Enemy HP: 70%&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="347">
+                    <mxGeometry y="20" width="115" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="345" value="Enemy Speed: 70%" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="347">
+                    <mxGeometry y="40" width="115" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="346" value="&lt;span&gt;Survival diff: 70%&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="347">
+                    <mxGeometry y="60" width="115" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="349" value="EASY" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="351">
+                    <mxGeometry width="110" height="35" as="geometry"/>
+                </mxCell>
+                <mxCell id="360" value="" style="group" vertex="1" connectable="0" parent="1">
+                    <mxGeometry x="410" y="850" width="115" height="115" as="geometry"/>
+                </mxCell>
+                <mxCell id="361" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="360">
+                    <mxGeometry y="5" width="110" height="110" as="geometry"/>
+                </mxCell>
+                <mxCell id="362" value="" style="group" vertex="1" connectable="0" parent="360">
+                    <mxGeometry y="35" width="115" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="363" value="&lt;span&gt;Enemy DPS: 100%&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="362">
+                    <mxGeometry width="115" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="364" value="&lt;span&gt;Enemy HP: 100%&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="362">
+                    <mxGeometry y="20" width="115" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="365" value="Enemy Speed: 100%" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="362">
+                    <mxGeometry y="40" width="115" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="366" value="&lt;span&gt;Survival diff: 100%&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="362">
+                    <mxGeometry y="60" width="115" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="367" value="NORMAL" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="360">
+                    <mxGeometry width="110" height="35" as="geometry"/>
+                </mxCell>
+                <mxCell id="368" value="" style="group" vertex="1" connectable="0" parent="1">
+                    <mxGeometry x="530" y="850" width="115" height="115" as="geometry"/>
+                </mxCell>
+                <mxCell id="369" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="368">
+                    <mxGeometry y="5" width="110" height="110" as="geometry"/>
+                </mxCell>
+                <mxCell id="370" value="" style="group" vertex="1" connectable="0" parent="368">
+                    <mxGeometry y="35" width="115" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="371" value="&lt;span&gt;Enemy DPS: 150%&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="370">
+                    <mxGeometry width="115" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="372" value="&lt;span&gt;Enemy HP: 150%&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="370">
+                    <mxGeometry y="20" width="115" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="373" value="Enemy Speed: 150%" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="370">
+                    <mxGeometry y="40" width="115" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="374" value="&lt;span&gt;Survival diff: 150%&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="370">
+                    <mxGeometry y="60" width="115" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="375" value="HARD" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="368">
+                    <mxGeometry width="110" height="35" as="geometry"/>
+                </mxCell>
+                <mxCell id="376" value="OPTION SCENES" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="-230" y="1060" width="230" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="380" value="" style="group" vertex="1" connectable="0" parent="1">
+                    <mxGeometry x="290" y="1060" width="225" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="381" value="Displayed when OPTIONS&lt;br&gt;&amp;nbsp;is clicked" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="380">
+                    <mxGeometry y="60" width="225" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="382" value="DESCRIPTION" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="380">
+                    <mxGeometry width="225" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="384" value="&lt;span&gt;EXIT SCENES&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="-230" y="1440" width="230" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="388" value="" style="group" vertex="1" connectable="0" parent="1">
+                    <mxGeometry x="305" y="1440" width="225" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="389" value="Displayed when EXIT&lt;br&gt;&amp;nbsp;is clicked. There should be some funny goodbye animation" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="388">
+                    <mxGeometry y="60" width="225" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="390" value="DESCRIPTION" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="388">
+                    <mxGeometry width="225" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="399" value="" style="group;fillColor=#FFCC99;" vertex="1" connectable="0" parent="1">
+                    <mxGeometry x="40" y="1060" width="230" height="330" as="geometry"/>
+                </mxCell>
+                <mxCell id="277" value="CHANGE RESOLUTION" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="399">
+                    <mxGeometry x="10" y="80" width="200" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="280" value="MUTE/UNMUTE GAME MUSIC" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="399">
+                    <mxGeometry x="12.5" y="160" width="195" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="282" value="MUTE/UNMUTE WORLD SOUND" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="399">
+                    <mxGeometry x="10" y="240" width="195" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="278" value="OPTIONS SCENE" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="399">
+                    <mxGeometry width="230" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="423" value="" style="group;fillColor=#FFFF99;" vertex="1" connectable="0" parent="1">
+                    <mxGeometry x="560" y="360" width="230" height="310" as="geometry"/>
+                </mxCell>
+                <mxCell id="418" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFF99;" vertex="1" parent="423">
+                    <mxGeometry y="50" width="230" height="260" as="geometry"/>
+                </mxCell>
+                <mxCell id="419" value="SELECT YOUR CLASS" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="423">
+                    <mxGeometry width="230" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="425" value="WARRIOR" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="423">
+                    <mxGeometry x="10" y="80" width="210" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="426" value="ARCHER" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="423">
+                    <mxGeometry x="10" y="135" width="210" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="428" value="MAGE" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="423">
+                    <mxGeometry x="10" y="190" width="210" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="432" value="" style="group" vertex="1" connectable="0" parent="1">
+                    <mxGeometry x="810" y="360" width="225" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="433" value="Displayed when number of players is selected&lt;br&gt;There are 3 different classes" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="432">
+                    <mxGeometry y="60" width="225" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="434" value="DESCRIPTION" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="432">
+                    <mxGeometry width="225" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="435" value="" style="group" vertex="1" connectable="0" parent="1">
+                    <mxGeometry x="1330" y="360" width="225" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="436" value="Displayed when the class is selected&lt;br&gt;Level resources are loading into RAM and prepared to be used" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="435">
+                    <mxGeometry y="60" width="225" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="437" value="DESCRIPTION" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="435">
+                    <mxGeometry width="225" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="439" value="" style="group" vertex="1" connectable="0" parent="1">
+                    <mxGeometry x="1840" y="360" width="225" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="440" value="Displayed when all the resources are loaded.&lt;br&gt;There will be displayed players, enemies, HUD, and the entire world" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="439">
+                    <mxGeometry y="60" width="225" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="441" value="DESCRIPTION" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="439">
+                    <mxGeometry width="225" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="52" value="" style="group" vertex="1" connectable="0" parent="1">
+                    <mxGeometry x="1770" y="40" width="230" height="310" as="geometry"/>
+                </mxCell>
+                <mxCell id="438" value="" style="group" vertex="1" connectable="0" parent="52">
+                    <mxGeometry x="-180" y="320" width="230" height="310" as="geometry"/>
+                </mxCell>
+                <mxCell id="53" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFF99;" vertex="1" parent="438">
+                    <mxGeometry y="50" width="230" height="260" as="geometry"/>
+                </mxCell>
+                <mxCell id="54" value="PLAY SCENE" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="438">
+                    <mxGeometry width="230" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="83" value="WORLD" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="438">
+                    <mxGeometry y="230" width="230" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="86" value="PLAYER" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="438">
+                    <mxGeometry y="170" width="70" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="87" value="ENEMY" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="438">
+                    <mxGeometry x="150" y="170" width="80" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="88" value="HIGHSCORE" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="438">
+                    <mxGeometry y="50" width="90" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="89" value="HP/MP" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="438">
+                    <mxGeometry x="130" y="50" width="100" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="451" value="" style="group" vertex="1" connectable="0" parent="1">
+                    <mxGeometry x="2110" y="360" width="230" height="310" as="geometry"/>
+                </mxCell>
+                <mxCell id="452" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFF99;" vertex="1" parent="451">
+                    <mxGeometry y="50" width="230" height="260" as="geometry"/>
+                </mxCell>
+                <mxCell id="453" value="INVENTORY SCENE" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="451">
+                    <mxGeometry width="230" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="454" value="PLAYER ABILITIES" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="451">
+                    <mxGeometry y="50" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="456" value="PLAYER USED ITEMS" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="451">
+                    <mxGeometry y="110" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="459" value="CONSUMABLE ITEMS" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="451">
+                    <mxGeometry y="170" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="467" value="" style="group" vertex="1" connectable="0" parent="1">
+                    <mxGeometry x="2360" y="360" width="230" height="200" as="geometry"/>
+                </mxCell>
+                <mxCell id="464" value="Displayed when the player calls it.&lt;br&gt;&lt;br&gt;A user can look at player abilities (STRENGTH, AGILITY, INTELIGENCE)&lt;br&gt;&lt;br&gt;A user can change equip/diseup gear items&lt;br&gt;&lt;br&gt;A user can equip.disequip consumable items" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="467">
+                    <mxGeometry y="60" width="230" height="140" as="geometry"/>
+                </mxCell>
+                <mxCell id="465" value="DESCRIPTION" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="467">
+                    <mxGeometry width="230" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="468" value="" style="group" vertex="1" connectable="0" parent="1">
+                    <mxGeometry x="3160" y="360" width="1515" height="310" as="geometry"/>
+                </mxCell>
+                <mxCell id="70" value="" style="group" vertex="1" connectable="0" parent="468">
+                    <mxGeometry width="230" height="310" as="geometry"/>
+                </mxCell>
+                <mxCell id="71" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFF99;" vertex="1" parent="70">
+                    <mxGeometry y="50" width="230" height="260" as="geometry"/>
+                </mxCell>
+                <mxCell id="72" value="END LEVEL SCENE" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="70">
+                    <mxGeometry width="230" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="132" value="HIGH SCORE" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="70">
+                    <mxGeometry y="50" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="134" value="Next Level" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="70">
+                    <mxGeometry x="55" y="160" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="138" value="" style="group" vertex="1" connectable="0" parent="468">
+                    <mxGeometry x="520" width="230" height="310" as="geometry"/>
+                </mxCell>
+                <mxCell id="139" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFF99;" vertex="1" parent="138">
+                    <mxGeometry y="50" width="230" height="260" as="geometry"/>
+                </mxCell>
+                <mxCell id="140" value="END GAME SCENE" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="138">
+                    <mxGeometry width="230" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="141" value="HIGH SCORE" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="138">
+                    <mxGeometry y="50" width="90" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="166" value="Back to Main Menu" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="138">
+                    <mxGeometry x="70" y="160" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="187" value="CREDITS" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="138">
+                    <mxGeometry x="70" y="110" width="120" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="194" value="" style="group" vertex="1" connectable="0" parent="468">
+                    <mxGeometry x="1040" width="230" height="310" as="geometry"/>
+                </mxCell>
+                <mxCell id="195" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFF99;" vertex="1" parent="194">
+                    <mxGeometry y="50" width="230" height="260" as="geometry"/>
+                </mxCell>
+                <mxCell id="196" value="GAME OVER SCENE" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="194">
+                    <mxGeometry width="230" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="197" value="HIGH SCORE" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="194">
+                    <mxGeometry y="50" width="90" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="414" value="" style="group" vertex="1" connectable="0" parent="194">
+                    <mxGeometry x="70" y="110" width="120" height="110" as="geometry"/>
+                </mxCell>
+                <mxCell id="198" value="Back to Main Menu" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="414">
+                    <mxGeometry y="50" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="199" value="GAME OVER :(" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="414">
+                    <mxGeometry width="120" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="442" value="" style="group" vertex="1" connectable="0" parent="468">
+                    <mxGeometry x="250" width="225" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="443" value="Displayed when the level is ended.&lt;br&gt;High score is displayed and the posibility to go to the next level" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="442">
+                    <mxGeometry y="60" width="225" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="444" value="DESCRIPTION" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="442">
+                    <mxGeometry width="225" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="445" value="" style="group" vertex="1" connectable="0" parent="468">
+                    <mxGeometry x="770" width="225" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="446" value="Displayed when all the levels are passed.&lt;br&gt;Credits are displayed and possiblity to back to main menu" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="445">
+                    <mxGeometry y="60" width="225" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="447" value="DESCRIPTION" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="445">
+                    <mxGeometry width="225" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="448" value="" style="group" vertex="1" connectable="0" parent="468">
+                    <mxGeometry x="1290" width="225" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="449" value="Displayed when the player's hp is decreased to 0.&lt;br&gt;There is a possibility to back to main menu" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="448">
+                    <mxGeometry y="60" width="225" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="450" value="DESCRIPTION" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="448">
+                    <mxGeometry width="225" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="472" value="" style="group" vertex="1" connectable="0" parent="1">
+                    <mxGeometry x="2640" y="360" width="230" height="310" as="geometry"/>
+                </mxCell>
+                <mxCell id="473" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFF99;" vertex="1" parent="472">
+                    <mxGeometry y="50" width="230" height="260" as="geometry"/>
+                </mxCell>
+                <mxCell id="474" value="PICK UP PLAYER ABILITIES" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="472">
+                    <mxGeometry width="230" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="495" value="+1 Inteligence" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="472">
+                    <mxGeometry x="10" y="230" width="210" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="497" value="+1 Agility" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="472">
+                    <mxGeometry x="10" y="170" width="210" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="496" value="+1 Strength" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="472">
+                    <mxGeometry x="10" y="110" width="210" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="478" value="" style="group" vertex="1" connectable="0" parent="1">
+                    <mxGeometry x="2890" y="360" width="230" height="200" as="geometry"/>
+                </mxCell>
+                <mxCell id="479" value="Displayed when the player levels up.&lt;br&gt;The player should pick one of three abilities" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="478">
+                    <mxGeometry y="60" width="230" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="480" value="DESCRIPTION" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="478">
+                    <mxGeometry width="230" height="60" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>

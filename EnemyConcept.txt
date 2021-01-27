@@ -1,0 +1,9 @@
+SHORT DESCRIPTION OF SPECIAL ABILITIES BASED ON LEVELS:
+
+    Level 1: There are some stealers that can steal food from you.
+    Level 2: There are snowy creatures whose attacks can lower a player’s temperature
+    Level 3: There are Lava creatures who attacks make the player thirsty
+    Level 4: There are underwater creatures that do not need oxygen.
+    Level 5: There are some rock stealers that can steal your rocks and let you to fly away into oblivion
+
+#1 TODO: Decide what enemies should be implemented (An example, land troops, air troops, range troops,....)

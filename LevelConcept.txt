@@ -1,0 +1,31 @@
+LEVEL DESCRIPTION:
+    Level 1: "Valley of the hungry" - Place scarce with food 
+    Level 2: "Snow wave"            - Very cold place
+    Level 3: "Eternal summer"       - Very hot place
+    Level 4: "The Great Sea"        - Underwater place
+    Level 5: "Kepler 51b"           - A place almost without gravity
+
+ENVIRONMENTAL DIFFICULTIES:
+-Each of the levels contains it's own environmental difficulty such as snow, sun, gravity, ... that makes reaching the goal more difficult.
+
+ITEMS OF SALVATION:
+-Each of the levels contains an a particular item that can help a player to overcome enviromental difficulty (Level 1: food, Level 2: campfire, Level 3: well, Level 4: aluminum oxygen cylinders, Level 5:rocks)
+
+ENEMIES:
+-Each of the levels contains it's own type of enemies that are adapted to the level:
+    Level 1: There are some stealers that can steal food from you.
+    Level 2: There are snowy creatures whose attacks can lower a player’s temperature
+    Level 3: There are Lava creatures who attacks make the player thirsty
+    Level 4: There are underwater creatures that do not need oxygen.
+    Level 5: There are some rock stealers that can steal your rocks and let you to fly away into oblivion
+
+EQUIPMENT ITEMS:
+-Each of the levels contains a special weapon that can help you to easily destroy enemies:
+    Level 1: Steel          sword/staff/bow
+    Level 2: Fire           sword/staff/bow
+    Level 3: Ice            word/staff/bow
+    Level 4: Rock           sword/staff/bow
+    Level 5: GravityStealer sword/staff/bow
+
+CONSUMABLE ITEMS:
+-Each of the levels contains consumable health/mana potion

@@ -1,0 +1,34 @@
+- This game belongs to "Cooperative Survival RPG 2D Platformer" Genre
+
+Genre explanation is below:
+
+Cooperative:
+    - Coop provides multiplayer (2 players)
+    - Players can play together so, it makes the game more fun.
+
+Survival:
+- Every of the level has its own environmental difficulty:
+    Leve 1: Hunger is players main attention. Player should pay attention on their hunger status, eat food to keep them alive. Food can be found somwhere on the map.
+
+    Level 2: Coldness is players main attention. Since the players are in a very cold area, it will be necessary from time to time for the players to find a campfire to warm up.
+
+    Level 3: Warmth is players main attention. This is one very hot area so players should drink water using their flasks and re-fill the their flasks when it is empty. It is possible to do using a well.
+
+    Level 4: Oxygen is players main attention. Players are very deep in the ocean, so as scuba divers there is oxygen limitation based on scuba diving tank. So they need to refil the oxygen finding aluminum oxygen cylinders somwhere on the map.
+
+    Level 5: Gravity is players main attention. Players are on the special gravity planet so they can jump very high.
+    It's a double-edged sword because if the player comes out of the level (By jumping from the highest platform in the map), the player travels directly to cosmos and still there until the end. So the players should fill their pockets with the rocks that can be found on the planet. Players which pockets are full of rocks are totally comfortable to jump.
+
+Role-Playing Game:
+    RPG elements that are included in the game are:
+    1.Classes - A player can play any of the 3 povided classes:
+                1. Warrior - Use handed weapons
+                2. Mage    - Use staff
+                3. Archer  - Use bow
+    2.Level System - A player can level up a hero and makes it stronger
+    3.Item system  - A player can equip items that finds somwhere on the map
+
+
+2D Platformer:
+    -This game has two axises (x and y).
+    -Platformers are characterized by their heavy use of jumping and climbing to navigate the player's environment and reach their goal

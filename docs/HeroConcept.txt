@@ -1,4 +1,4 @@
-COMMON FOR ALL THE HERO CLASSES:
+COMMON FOR ALL THE HERO CLASSES:hyguyfgtuf
     -Health Points
     -Damage
     -Energy

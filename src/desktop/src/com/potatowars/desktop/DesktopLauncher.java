@@ -10,6 +10,7 @@ public class DesktopLauncher {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
 		config.width = (int) GameConfig.WIDTH;
 		config.height = (int) GameConfig.HEIGHT;
-		new LwjglApplication(new PotatoWars(), config);
+		new LwjglApplication(new PotatoWars(),
+				config);
 	}
 }

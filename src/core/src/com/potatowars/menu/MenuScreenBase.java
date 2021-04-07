@@ -2,7 +2,6 @@ package com.potatowars.menu;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.ScreenAdapter;
-import com.badlogic.gdx.assets.AssetDescriptor;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
@@ -102,6 +101,10 @@ public abstract class MenuScreenBase extends ScreenAdapter {
     @Override
     public void dispose() {
         stage.dispose();
+    }
+
+    public Viewport getViewport() {
+        return viewport;
     }
 
     // == protected methods == //

@@ -1,7 +1,6 @@
 package com.potatowars.menu;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Actor;
@@ -13,8 +12,8 @@ import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.potatowars.PotatoWars;
 import com.potatowars.assets.AssetDescriptors;
 import com.potatowars.assets.RegionNames;
-import com.potatowars.common.GameManager;
 import com.potatowars.menu.DifficultyScreens.DifficultyScreen;
+import com.potatowars.menu.LoadingScreens.LoadingGame;
 import com.potatowars.menu.OptionsScreens.OptionsScreen;
 
 public class MenuScreen extends  MenuScreenBase {
@@ -42,8 +41,9 @@ public class MenuScreen extends  MenuScreenBase {
         playButton.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
+
                 CheckAndPlayMenuSound();
-                //Translate to the next screen
+                game.setScreen(new LoadingGame(game,getViewport()));
             }
         });
 

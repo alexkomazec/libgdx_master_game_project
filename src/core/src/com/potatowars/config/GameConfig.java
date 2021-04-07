@@ -3,11 +3,33 @@ package com.potatowars.config;
 public class GameConfig {
 
     // == Game Size ==
-    public static final  float WIDTH = 480; //pixels
-    public static final  float HEIGHT  = 800f; //pixels
+    public static final float WORLD_BOX_SIZE = 16f;
 
-    public static final float HUD_WIDTH = 480f; // world units
-    public static final float HUD_HEIGHT = 800f; // world units
+    // == Box2d Scalling ==
+    //INFO: Creating a body with width 16 and height 16, in box2D world it is represented as 16 meters x 16 meters body
+    //      which is too heavy, so scalling is important part.
+    public static final float PPM = 8; // pixels per meter
+
+    public static final float WIDTH = 800f; //pixels
+    public static final float HEIGHT  = 416f; //pixels
+
+    public static final float HUD_WIDTH = 800f; // world units
+    public static final float HUD_HEIGHT = 416f; // world units
+
+    //== Gameplay Size ==
+    public static final  float GAME_WIDTH = 800f; //pixels
+    public static final  float GAME_HEIGHT  = HEIGHT/2; //pixels
+
+    public static final float GAME_WIDTH_WUNIT  = GAME_WIDTH/WORLD_BOX_SIZE; // world units
+    public static final float GAME_HEIGHT_WUNIT = GAME_HEIGHT/WORLD_BOX_SIZE; // world units
+
+    // == World Size ==
+    public static final float WORLD_WIDTH = WIDTH/WORLD_BOX_SIZE; // world units
+    public static final float WORLD_HEIGHT = HEIGHT/WORLD_BOX_SIZE; // world units
+
+    public static final float WORLD_CENTER_X = WORLD_WIDTH / 2f; // world units
+    public static final float WORLD_CENTER_Y = WORLD_HEIGHT / 2f; // world units
+
 
     // == Predefined string ==
     public static final String GAME_SOUND = "GAME SOUND";
@@ -46,7 +68,28 @@ public class GameConfig {
     public static final float ENEMY_SPEED_HARD = ENEMY_SPEED*HARD_MULTIPLIER; // 150% of normal
     public static final float SURVIVAL_DIFFICULTY_HARD= SURVIVAL_DIFFICULTY*HARD_MULTIPLIER; // 150% of normal
 
-    private GameConfig(){
+    // == Names of Level Maps
+    public static final String LEVEL1 = "maps/valleyOfTheHungry_Level1/valleyOfTheHungry.tmx";
+    public static final String LEVEL2 = "none";
+    public static final String LEVEL3 = "none";
+    public static final String LEVEL4 = "none";
+    public static final String LEVEL5 = "none";
 
-    }
+    // == Box2D types of Bodies
+    public static final int iSTATIC = 0;
+    public static final int iDYNAMIC = 1;
+    public static final int iKINEMATIC = 2;
+
+    //Debugging phrases
+    public static final String DEVELOPMENT_ERROR = "DEVELOPMENT ERROR:";
+
+    //Parsing .tmx files
+    // == Box2D types of Bodies in String
+    public static final String strSTATIC = "static";
+    public static final String strDYNAMIC = "dynamic";
+    public static final String strKINEMATIC = "kinematic";
+
+    public static final String PLAYER = "Player";
+
+    private GameConfig(){}
 }

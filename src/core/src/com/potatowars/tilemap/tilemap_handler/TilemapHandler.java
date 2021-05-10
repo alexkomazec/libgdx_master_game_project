@@ -1,4 +1,4 @@
-package com.potatowars;
+package com.potatowars.tilemap.tilemap_handler;
 
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.maps.MapGroupLayer;
@@ -17,10 +17,13 @@ import com.badlogic.gdx.physics.box2d.ChainShape;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.Shape;
 import com.badlogic.gdx.physics.box2d.World;
+import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Disposable;
 import com.potatowars.box2d.Box2dBodyBuilder;
 import com.potatowars.config.GameConfig;
-import com.potatowars.sprites.DummyHero;
+import com.potatowars.sprites.characters.MainCharacter;
+import com.potatowars.sprites.items.ExitGoal;
+import com.potatowars.sprites.items.InteractiveTileObject;
 
 public class TilemapHandler implements Disposable {
 
@@ -37,18 +40,35 @@ public class TilemapHandler implements Disposable {
     private TilemapHandler() { }
 
 
-    public static void createMap(World world, String fileName,DummyHero dummyHero )
+    public static void createMap(World world, String fileName,
+                                 //Living and Non-Living objects
+                                 MainCharacter mainCharacter,
+                                 Array<InteractiveTileObject> interactiveTiledObjects)
     {
-        parseTiledObjectLayer(world,fileName,dummyHero);
+        parseTiledObjectLayer(world,fileName,
+                //Living and Non-Living objects
+                mainCharacter,
+                interactiveTiledObjects);
     }
 
-    private static void createBodyForAllTheLayers(MapObjects objects, World world, int bodyType, MapLayer mapLayer,DummyHero dummyHero){
+    private static void createBodyForAllTheObjectsInTheLayer(MapObjects objects, World world, int bodyType, MapLayer mapLayer,
+                                                             //Living and Non-Living objects
+                                                             MainCharacter mainCharacter,
+                                                             Array<InteractiveTileObject> interactiveTiledObjects){
 
         for(MapObject object : objects) {
+
+            //Go through all the objects in the particular layer
             if(object instanceof PolylineMapObject) {
+                //PolyLineMapObject is an irregular shape which beggining and and are not at the same
+                //position
                 Shape shape = createPolyline((PolylineMapObject) object);
-                Box2dBodyBuilder.createBox(world,bodyType,shape);
+
+                Box2dBodyBuilder.createBodyAndPutIntoTheWorld(world,bodyType,shape);
             } else {
+                //Then object is a rectangular object.
+                //Note: All others object shapes (PolygonMapObject,TextureMapObject,EclipseMapObject
+                // CircleMapObject) are not supported in this project.
                 Rectangle rect = ((RectangleMapObject)object).getRectangle();
 
                 PolygonShape shape = new PolygonShape();
@@ -59,10 +79,72 @@ public class TilemapHandler implements Disposable {
                 // by dummyPlayer referece (dummyPlayer reference from parseTiledObjectLayer is just a copy of the "real dummyPlayer" reference) will allocate new
                 // piece of memmory that dummyPlayer reference (coppied one) will be pointing to, so passed, original dummyPlayer reference will be untouched
                 //TODO: REF1: Think about a better solution. This solution works well but portability is poor.
-                if(mapLayer.getName().contains(GameConfig.PLAYER)){
-                    dummyHero.setB2Body(Box2dBodyBuilder.createBox(world,rect.getX() + rect.getWidth()/2,rect.getY() + rect.getHeight()/2, rect.getWidth(),rect.getHeight(),bodyType,shape,dummyHero));
-                }else {
-                    Box2dBodyBuilder.createBox(
+
+                if(GameConfig.iDYNAMIC == bodyType) {
+                    if (null != object.getName()) {
+                        //If dynamic object has a name
+                        if (object.getName().contains(GameConfig.PLAYER_NAME)) {
+                            mainCharacter.setB2Body(Box2dBodyBuilder.createBodyAndPutIntoTheWorld(
+                                    world,
+                                    rect.getX() + rect.getWidth() / 2,
+                                    rect.getY() + rect.getHeight() / 2,
+                                    rect.getWidth(),
+                                    rect.getHeight(),
+                                    bodyType,
+                                    shape,
+                                    mainCharacter));
+                        } else {
+                            //TODO: Put all other dynamic bodies likes enemies
+                        }
+                    }else{
+                        // If dynamic object has not a name, however put it in the world
+                        Box2dBodyBuilder.createBodyAndPutIntoTheWorld(
+                                world,
+                                rect.getX() + rect.getWidth() / 2,
+                                rect.getY() + rect.getHeight() / 2,
+                                rect.getWidth(),
+                                rect.getHeight(),
+                                bodyType,
+                                shape,
+                                mainCharacter);
+                    }
+                }
+                else if(GameConfig.iSTATIC == bodyType){
+                    if (null != object.getName()) {
+                        //If the static object has a name
+                        if(object.getName().contains(GameConfig.EXIT_DOOR_NAME)) {
+                            ExitGoal exitDoor = new ExitGoal();
+                            exitDoor.setB2Body(Box2dBodyBuilder.createBodyAndPutIntoTheWorld(
+                                    world,
+                                    rect.getX() + rect.getWidth() / 2,
+                                    rect.getY() + rect.getHeight() / 2,
+                                    rect.getWidth() / 2,
+                                    rect.getHeight() / 2,
+                                    bodyType,
+                                    shape,
+                                    exitDoor
+                            ));
+                            interactiveTiledObjects.add(exitDoor);
+                        }else{
+                            //TODO: More static objects with names should be put there
+                        }
+                    }else{
+                        //if the static object has not a name
+                        Box2dBodyBuilder.createBodyAndPutIntoTheWorld(
+                                world,
+                                rect.getX() + rect.getWidth() / 2,
+                                rect.getY() + rect.getHeight() / 2,
+                                rect.getWidth() / 2,
+                                rect.getHeight() / 2,
+                                bodyType,
+                                shape,
+                                new InteractiveTileObject()
+                        );
+                    }
+                }
+                else {
+                    //If the object has not a name
+                    Box2dBodyBuilder.createBodyAndPutIntoTheWorld(
                             world,
                             rect.getX() + rect.getWidth() / 2,
                             rect.getY() + rect.getHeight() / 2,
@@ -70,14 +152,14 @@ public class TilemapHandler implements Disposable {
                             rect.getHeight() / 2,
                             bodyType,
                             shape,
-                            dummyHero
+                            mainCharacter
                     );
                 }
             }
         }
     }
 
-    private static int DecideBodyType(MapObjects objects, MapLayer mapLayer){
+    private static int decideBodyType(MapObjects objects, MapLayer mapLayer){
 
         int bodyType = GameConfig.iSTATIC; //Static is default value
 
@@ -96,28 +178,43 @@ public class TilemapHandler implements Disposable {
         return bodyType;
     }
 
-    private static void RecursiveSeraching(MapLayer mapLayer,World world, DummyHero dummyHero)
+    private static void RecursiveSeraching(MapLayer mapLayer,World world,
+                                           //Living and Non-Living objects
+                                           MainCharacter mainCharacter,
+                                           Array<InteractiveTileObject> interactiveTiledObjects)
     {
-
+        //MapGroupLayer represents a folder of layers, so if mapLayer is instances of it,
+        //go into the folder and do recursive searching.
         if(mapLayer instanceof  MapGroupLayer) {
 
             MapGroupLayer mapGroupLayer = (MapGroupLayer)mapLayer;
 
             for(int i = 0; i < mapGroupLayer.getLayers().size();i++){
-                RecursiveSeraching(mapGroupLayer.getLayers().get(i),world,dummyHero);
+                RecursiveSeraching(mapGroupLayer.getLayers().get(i),world,
+                        //Living and Non-Living objects
+                        mainCharacter,
+                        interactiveTiledObjects);
             }
         }else{
+            //It means that the current Maplayer is a layer, not a folder of layers
             MapObjects objects = mapLayer.getObjects();
-            int bodyType = DecideBodyType(objects, mapLayer);
+            int bodyType = decideBodyType(objects, mapLayer);
 
             if( GameConfig.iNOT_BODY != bodyType){
-                createBodyForAllTheLayers(objects,world,bodyType,mapLayer,dummyHero);
+                //Create a body for each of the objcets in the body
+                createBodyForAllTheObjectsInTheLayer(objects,world,bodyType,mapLayer,
+                        //Living and Non-Living objects
+                        mainCharacter,
+                        interactiveTiledObjects);
             }
         }
 
     }
 
-    public static void parseTiledObjectLayer(World world,String fileName,DummyHero dummyHero) {
+    public static void parseTiledObjectLayer(World world, String fileName,
+                                             //Living and Non-Living objects
+                                             MainCharacter mainCharacter,
+                                             Array<InteractiveTileObject> interactiveTiledObjects) {
 
         mapLoader = new TmxMapLoader();
 
@@ -131,8 +228,12 @@ public class TilemapHandler implements Disposable {
         //Getting layers from the level file
         MapLayers mapLayers = map.getLayers();
 
+        //Go through all the folders/layers/objects in the map
         for(MapLayer mapLayer : mapLayers) {
-            RecursiveSeraching(mapLayer,world,dummyHero);
+            RecursiveSeraching(mapLayer,world,
+                    //Living and Non-Living objects
+                    mainCharacter,
+                    interactiveTiledObjects);
         }
     }
 

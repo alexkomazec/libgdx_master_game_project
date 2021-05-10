@@ -13,9 +13,6 @@ public class PotatoWars extends Game {
 	private AssetManager assetManager;
 	private SpriteBatch batch;
 
-	//private TilemapHandler tilemapHandler;
-	private Box2dWorld box2dWorld;
-
 
 	@Override
 	public void create() {
@@ -25,7 +22,6 @@ public class PotatoWars extends Game {
 
 		batch = new SpriteBatch();
 
-		box2dWorld = Box2dWorld.getInstance();
 		//tilemapHandler = new TilemapHandler(box2dWorld);
 
 		setScreen(new LoadingIntroScreen(this));
@@ -46,10 +42,5 @@ public class PotatoWars extends Game {
 	public SpriteBatch getBatch() {
 		return batch;
 	}
-
-	public Box2dWorld getBox2dWorld() {
-		return box2dWorld;
-	}
-
 
 }

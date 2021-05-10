@@ -1,19 +1,19 @@
 package com.potatowars.sprites.commonParameters;
 
-public class BaseCharacter {
+public class ParametersPackage {
 
     ShapeArea area;
     ShapePosition position;
     CommonStates states;
 
-    public BaseCharacter(float height, float weight, float x, float y){
+    public ParametersPackage(float height, float weight, float x, float y){
         area = new ShapeArea(height,weight);
         position = new ShapePosition(x,y);
 
         states = new CommonStates();
     }
 
-    public BaseCharacter(){
+    public ParametersPackage(){
         area = new ShapeArea(1,1);
         position = new ShapePosition(0,0);
 

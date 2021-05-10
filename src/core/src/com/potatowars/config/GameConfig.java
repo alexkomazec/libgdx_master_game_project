@@ -8,7 +8,7 @@ public class GameConfig {
     // == Box2d Scalling ==
     //INFO: Creating a body with width 16 and height 16, in box2D world it is represented as 16 meters x 16 meters body
     //      which is too heavy, so scalling is important part.
-    public static final float PPM = 8; // pixels per meter
+    public static final float PPM = 4; // pixels per meter
 
     public static final float WIDTH = 800f; //pixels
     public static final float HEIGHT  = 416f; //pixels
@@ -79,6 +79,7 @@ public class GameConfig {
     public static final int iSTATIC = 0;
     public static final int iDYNAMIC = 1;
     public static final int iKINEMATIC = 2;
+    public static final int iNOT_BODY = 3;
 
     //Debugging phrases
     public static final String DEVELOPMENT_ERROR = "DEVELOPMENT ERROR:";
@@ -89,7 +90,13 @@ public class GameConfig {
     public static final String strDYNAMIC = "dynamic";
     public static final String strKINEMATIC = "kinematic";
 
-    public static final String PLAYER = "Player";
+    public static final String PLAYER_NAME = "player";
+    public static final String EXIT_DOOR_NAME = "exit_door";
+
+    public static final short GROUND_BIT = 1;
+    public static final short HERO_BIT = 2;
+    public static final short EXIT_DOOR_BIT = 4;
+    public static final short BONUS_DOOR_BIT = 8;
 
     private GameConfig(){}
 }

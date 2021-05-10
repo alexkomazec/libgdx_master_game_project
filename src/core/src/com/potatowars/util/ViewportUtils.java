@@ -9,13 +9,13 @@ public class ViewportUtils {
 
     private static final Logger log = new Logger(ViewportUtils.class.getName(), Logger.DEBUG);
 
-    private static final int DEFAULT_CELL_SIZE = 1;
+    private static final float DEFAULT_CELL_SIZE = 1;
 
     public static void drawGrid(Viewport viewport, ShapeRenderer renderer) {
         drawGrid(viewport, renderer, DEFAULT_CELL_SIZE);
     }
 
-    public static void drawGrid(Viewport viewport, ShapeRenderer renderer, int cellSize) {
+    public static void drawGrid(Viewport viewport, ShapeRenderer renderer, float cellSize) {
         // validate parameters/arguments
         if (viewport == null) {
             throw new IllegalArgumentException("viewport param is required.");

@@ -2,7 +2,10 @@ package com.potatowars.menu.LoadingScreens;
 
 import com.potatowars.PotatoWars;
 import com.potatowars.assets.AssetDescriptors;
+import com.potatowars.menu.EndGameScreens.EndLevelScreen;
 import com.potatowars.menu.MenuScreen;
+
+import java.awt.Menu;
 
 public class LoadingIntroScreen extends LoadingScreenBase {
 

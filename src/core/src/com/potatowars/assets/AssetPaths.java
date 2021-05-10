@@ -5,6 +5,9 @@ public class AssetPaths {
     // == backgrounds ==
     public static final String BACK_GROUND = "backgrounds/background.atlas";
 
+    // == hero frames ==
+    public static final String HERO_FRAME_ATLAS = "sprites/hero/output/hero_moves.atlas";
+
     // == gui menus ==
     public static final String UI_SKIN = "ui/uiSkinMenu.json";
 

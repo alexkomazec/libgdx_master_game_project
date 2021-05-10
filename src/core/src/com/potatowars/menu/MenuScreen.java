@@ -18,7 +18,6 @@ import com.potatowars.menu.OptionsScreens.OptionsScreen;
 
 public class MenuScreen extends  MenuScreenBase {
 
-
     public MenuScreen(PotatoWars game) {
         super(game);
     }
@@ -41,7 +40,6 @@ public class MenuScreen extends  MenuScreenBase {
         playButton.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-
                 CheckAndPlayMenuSound();
                 game.setScreen(new LoadingGame(game,getViewport()));
             }

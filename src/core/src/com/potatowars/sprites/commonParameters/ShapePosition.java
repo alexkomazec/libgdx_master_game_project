@@ -1,4 +1,4 @@
-package com.potatowars.sprites.basicParameters;
+package com.potatowars.sprites.commonParameters;
 
 public class ShapePosition {
 

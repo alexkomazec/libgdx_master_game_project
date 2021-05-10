@@ -33,6 +33,11 @@
       "downFontColor": "white",
       "overFontColor": "gray"
     }
+    "readOnly": {
+      "up": "yellow_button00",
+      "font": "default-font",
+      "fontColor": "black",
+    }
   },
   "com.badlogic.gdx.scenes.scene2d.ui.Label$LabelStyle": {
     "default": {

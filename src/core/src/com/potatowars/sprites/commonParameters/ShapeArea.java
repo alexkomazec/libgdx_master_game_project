@@ -3,11 +3,11 @@ package com.potatowars.sprites.commonParameters;
 public class ShapeArea {
 
     //2D shape area
-    private float height, weight;
+    private float height, width;
 
-    public ShapeArea(float height, float weight){
+    public ShapeArea(float height, float width){
         this.height = height;
-        this.weight = weight;
+        this.width = width;
     }
 
     public float getHeight() {
@@ -15,14 +15,14 @@ public class ShapeArea {
     }
 
     public float getWeight() {
-        return weight;
+        return width;
     }
 
     public void setHeight(float height) {
         this.height = height;
     }
 
-    public void setWeight(float weight) {
-        this.weight = weight;
+    public void setWidth(float width) {
+        this.width = width;
     }
 }

@@ -3,7 +3,7 @@ package com.potatowars.sprites.commonParameters;
 public class CommonStates {
 
     //State stuff
-    public enum State{STANDING,FALLING,JUMPING,RUNNING};
+    public enum State{STANDING,FALLING,JUMPING,RUNNING,DYING,BEINGHURT,ATTACKING};
 
     private State currentState;
     private State previosState;

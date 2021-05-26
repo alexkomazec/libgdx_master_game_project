@@ -1,0 +1,41 @@
+
+mage_moves.png
+size: 1024,32
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+mage_moves_cast
+  rotate: false
+  xy: 287, 2
+  size: 188, 27
+  orig: 188, 27
+  offset: 0, 0
+  index: -1
+mage_moves_dead
+  rotate: false
+  xy: 700, 4
+  size: 94, 25
+  orig: 94, 25
+  offset: 0, 0
+  index: -1
+mage_moves_fall
+  rotate: false
+  xy: 477, 2
+  size: 124, 27
+  orig: 124, 27
+  offset: 0, 0
+  index: -1
+mage_moves_hurt
+  rotate: false
+  xy: 603, 3
+  size: 95, 26
+  orig: 95, 26
+  offset: 0, 0
+  index: -1
+mage_moves_walk
+  rotate: false
+  xy: 2, 4
+  size: 283, 25
+  orig: 283, 25
+  offset: 0, 0
+  index: -1

@@ -8,8 +8,8 @@ import com.badlogic.gdx.physics.box2d.Shape;
 import com.badlogic.gdx.physics.box2d.World;
 import com.potatowars.config.GameConfig;
 import com.potatowars.sprites.characters.BasicCharacter;
-import com.potatowars.sprites.characters.EnemyCharacter;
-import com.potatowars.sprites.characters.MainCharacter;
+import com.potatowars.sprites.characters.nonPlayableCharacters.EnemyCharacter;
+import com.potatowars.sprites.characters.playableCharacters.MainCharacter;
 import com.potatowars.sprites.items.ExitGoal;
 import com.potatowars.sprites.items.InteractiveTileObject;
 
@@ -129,8 +129,8 @@ public class Box2dBodyBuilder {
         }else if(GameConfig.iDYNAMIC == bodyType){
             hero.setX(x);
             hero.setY(y);
-            hero.setHeigt(height);
-            hero.setWeight(width);
+            hero.getParametersPackage().getArea().setHeight(height);
+            hero.getParametersPackage().getArea().setWidth(width);
 
             FixtureDef fdef = new FixtureDef();
             fdef.shape = shape;

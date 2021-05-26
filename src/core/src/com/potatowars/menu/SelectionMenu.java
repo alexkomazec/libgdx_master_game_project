@@ -1,6 +1,5 @@
 package com.potatowars.menu;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Actor;
@@ -9,21 +8,22 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
+import com.badlogic.gdx.utils.viewport.Viewport;
 import com.potatowars.PotatoWars;
 import com.potatowars.assets.AssetDescriptors;
 import com.potatowars.assets.RegionNames;
-import com.potatowars.menu.DifficultyScreens.DifficultyScreen;
+import com.potatowars.config.GameConfig;
 import com.potatowars.menu.LoadingScreens.LoadingGame;
-import com.potatowars.menu.OptionsScreens.OptionsScreen;
 
-public class MenuScreen extends  MenuScreenBase {
+public class SelectionMenu extends MenuScreenBase {
 
-    public MenuScreen(PotatoWars game) {
+    GameConfig.HeroType heroSelected;
+    Viewport viewport;
+
+    public SelectionMenu(PotatoWars game,Viewport viewport) {
         super(game);
-        //Fresh start, force garbage collector to clean all the garbage
-        //When the menu screen has been created(For the first time or when
-        // losing a game and come to the menu screen again)
-        System.gc();
+        this.viewport = viewport;
+        heroSelected = GameConfig.HeroType.WARRIOR_SELECTED;
     }
 
     @Override
@@ -39,43 +39,46 @@ public class MenuScreen extends  MenuScreenBase {
         TextureRegion backgroundRegion = backGround.findRegion(RegionNames.BACKGROUND);
         table.setBackground(new TextureRegionDrawable(backgroundRegion));
 
-        // start game
-        TextButton playButton = new TextButton("START GAME", uiskin);
-        playButton.addListener(new ChangeListener() {
+        // Warrior selection button
+        final TextButton selectWarrior = new TextButton("Warrior",uiskin);
+        selectWarrior.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
                 CheckAndPlayMenuSound();
-                game.setScreen(new SelectionMenu(game,getViewport()));
+                heroSelected = GameConfig.HeroType.WARRIOR_SELECTED;
+                game.setScreen(new LoadingGame(game,getViewport(),heroSelected));
             }
         });
 
-        // set difficulty button
-        TextButton setDifficulty = new TextButton("SET DIFFICULTY", uiskin);
-        setDifficulty.addListener(new ChangeListener() {
+        // Mage selection button
+        TextButton selectMage = new TextButton("Mage",uiskin);
+        selectMage.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
                 CheckAndPlayMenuSound();
-                game.setScreen(new DifficultyScreen(game));
+                heroSelected = GameConfig.HeroType.MAGE_SELECTED;
+                game.setScreen(new LoadingGame(game,getViewport(),heroSelected));
             }
         });
 
-        // options button
-        TextButton optionsButton = new TextButton("OPTIONS", uiskin);
-        optionsButton.addListener(new ChangeListener() {
+        // Warrior selection button
+        TextButton selectHunter = new TextButton("Hunter",uiskin);
+        selectHunter.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
                 CheckAndPlayMenuSound();
-                game.setScreen(new OptionsScreen(game));
+                heroSelected = GameConfig.HeroType.HUNTER_SELECTED;
+                game.setScreen(new LoadingGame(game,getViewport(),heroSelected));
             }
         });
 
-        // quit button
-        TextButton quitButton = new TextButton("QUIT", uiskin);
-        quitButton.addListener(new ChangeListener() {
+        //Back to main menu
+        TextButton mainMenuButton = new TextButton("Back",uiskin);
+        mainMenuButton.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
                 CheckAndPlayMenuSound();
-                quit();
+                game.setScreen(new MenuScreen(game));
             }
         });
 
@@ -83,10 +86,10 @@ public class MenuScreen extends  MenuScreenBase {
         Table buttonTable = new Table(uiskin);
         buttonTable.defaults().pad(20);
 
-        buttonTable.add(playButton).row();
-        buttonTable.add(setDifficulty).row();
-        buttonTable.add(optionsButton).row();
-        buttonTable.add(quitButton);
+        buttonTable.add(selectWarrior).row();
+        buttonTable.add(selectHunter).row();
+        buttonTable.add(selectMage).row();
+        buttonTable.add(mainMenuButton);
 
         buttonTable.center();
 
@@ -98,9 +101,4 @@ public class MenuScreen extends  MenuScreenBase {
         return table;
     }
 
-    private void quit()
-    {
-        CheckAndPlayMenuSound();
-        Gdx.app.exit();
-    }
 }

@@ -21,7 +21,7 @@ import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Disposable;
 import com.potatowars.box2d.Box2dBodyBuilder;
 import com.potatowars.config.GameConfig;
-import com.potatowars.sprites.characters.MainCharacter;
+import com.potatowars.sprites.characters.playableCharacters.MainCharacter;
 import com.potatowars.sprites.items.ExitGoal;
 import com.potatowars.sprites.items.InteractiveTileObject;
 

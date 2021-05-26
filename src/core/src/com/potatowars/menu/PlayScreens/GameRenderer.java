@@ -4,7 +4,6 @@ import com.badlogic.gdx.Application;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -20,11 +19,16 @@ import com.potatowars.box2d.Box2dBodyBuilder;
 import com.potatowars.box2d.Box2dWorld;
 import com.potatowars.config.GameConfig;
 import com.potatowars.menu.Background;
-import com.potatowars.sprites.characters.MainCharacter;
+import com.potatowars.sprites.characters.playableCharacters.MainCharacter;
 import com.potatowars.tilemap.tilemap_handler.TilemapHandler;
 import com.potatowars.util.GdxUtils;
 import com.potatowars.util.ViewportUtils;
 import com.potatowars.util.debug.DebugCameraController;
+
+import static com.potatowars.config.GameConfig.ENABLE_IT;
+import static com.potatowars.config.GameConfig.box2dBodyRenderrer_flag;
+import static com.potatowars.config.GameConfig.cameraDebugging_flag;
+import static com.potatowars.config.GameConfig.mapRenderrer_flag;
 
 public class GameRenderer implements Disposable {
 
@@ -38,12 +42,10 @@ public class GameRenderer implements Disposable {
     private Viewport viewport;
 
     //Hud view
-    private OrthographicCamera hudCamera;
     private Viewport hudViewport;
 
     //Texture related stuff
     private SpriteBatch batch;
-    private Texture tex;
 
     private DebugCameraController debugCameraController;
     private final GameController controller;
@@ -55,27 +57,26 @@ public class GameRenderer implements Disposable {
 
     PotatoWars game;
 
+    Hud hud;
+
     // == constructors ==
-    public GameRenderer(PotatoWars game, GameController controller, AssetManager assetManager, Box2dWorld box2dWorld, MainCharacter mainCharacter) {
+    public GameRenderer(PotatoWars game, GameController controller, AssetManager assetManager, Box2dWorld box2dWorld, MainCharacter mainCharacter,Hud hud) {
         this.controller = controller;
         this.mainCharacter = mainCharacter;
         this.game   =   game;
-        tex = new Texture("sprites/hero/cat.png");
+        this.hud    =   hud;
         init(assetManager,box2dWorld);
     }
 
     // == init ==
     private void init(AssetManager assetManager,Box2dWorld box2dWorld) {
-        Gdx.app.setLogLevel(Application.LOG_DEBUG);
+        Gdx.app.setLogLevel(Application.LOG_NONE);
 
         this.box2dWorld = box2dWorld;
         camera = new OrthographicCamera();
         viewport = new FitViewport(Box2dBodyBuilder.divideByPpm(GameConfig.GAME_WIDTH), Box2dBodyBuilder.divideByPpm(GameConfig.GAME_HEIGHT) ,camera);
-        //viewport = new FitViewport(GameConfig.GAME_WIDTH, GameConfig.GAME_HEIGHT,camera);
-        //camera.position.set(viewport.getWorldWidth()/2,viewport.getWorldHeight()*2,0);
 
-        hudCamera = new OrthographicCamera();
-        hudViewport = new FitViewport(GameConfig.HUD_WIDTH, GameConfig.HUD_HEIGHT, hudCamera);
+        hudViewport = new FitViewport(GameConfig.HUD_WIDTH/GameConfig.PPM, GameConfig.HUD_HEIGHT/GameConfig.PPM, camera);
         batch = game.getBatch();
 
 
@@ -89,8 +90,6 @@ public class GameRenderer implements Disposable {
 
         backgroundRegion = backGround.findRegion(RegionNames.BACKGROUND);
 
-        //(GameConfig.WORLD_HEIGHT/v )*(1/GameConfig.WORLD_BOX_SIZE)
-
     }
 
 
@@ -100,31 +99,33 @@ public class GameRenderer implements Disposable {
         box2dWorld.getWorld().step(1/60f,6,2);
         camera.position.set(mainCharacter.b2body.getPosition().x, mainCharacter.b2body.getPosition().y,0);
 
-        // not wrapping inside alive cuz we want to be able to control camera even when there is game over
-        //debugCameraController.handleDebugInput(delta);
-        //debugCameraController.applyTo(camera);
+        if(ENABLE_IT == cameraDebugging_flag ){
+            debugCameraController.handleDebugInput(delta);
+            debugCameraController.applyTo(camera);
+        }
 
         // clear screen
         GdxUtils.clearScreen();
         camera.update();
 
-        TilemapHandler.OrthogonalTiledMapRendererSetView(camera);
-        TilemapHandler.OrthogonalTiledMapRendererRender();
+        if(ENABLE_IT == mapRenderrer_flag) {
+            TilemapHandler.OrthogonalTiledMapRendererSetView(camera);
+            TilemapHandler.OrthogonalTiledMapRendererRender();
+        }
 
-        box2dWorld.Box2DDebugRendererRender(box2dWorld.getWorld(),camera.combined);
+        if(ENABLE_IT == box2dBodyRenderrer_flag) {
+            box2dWorld.Box2DDebugRendererRender(box2dWorld.getWorld(), camera.combined);
+        }
 
+        //Rendering everything that is not a map
         batch.setProjectionMatrix(camera.combined);
         batch.begin();
-            //batch.draw(tex, dummyHero.getB2Body_positionX() - (tex.getWidth()/2), dummyHero.getB2Body_positionY() - (tex.getHeight()/2));
-            /*batch.draw(
-                    tex,
-                    dummyHero.getB2Body_positionX() - Box2dBodyBuilder.divideByPpm(dummyHero.getWeight()),
-                    dummyHero.getB2Body_positionY() - Box2dBodyBuilder.divideByPpm(dummyHero.getHeight()),
-                    Box2dBodyBuilder.divideByPpm(dummyHero.getWeight()*2),
-                    Box2dBodyBuilder.divideByPpm(dummyHero.getHeight()*2)
-            );*/
             mainCharacter.draw(batch);
         batch.end();
+
+        //Rendering HUD as a top layer
+        game.getBatch().setProjectionMatrix(hud.stage.getCamera().combined);
+        hud.stage.draw();
 
         //renderGamePlay();
 
@@ -143,6 +144,8 @@ public class GameRenderer implements Disposable {
     }
 
     // == private methods ==
+    // This method is currently unused but planned to used in the future as a kind
+    //of gameplay effects
     private void renderGamePlay() {
         viewport.apply();
         batch.setProjectionMatrix(camera.combined);
@@ -158,6 +161,8 @@ public class GameRenderer implements Disposable {
         batch.end();
     }
 
+    // Debbuging methods that is currently unused
+    // It can be used for shape rendering
     private void renderDebug() {
         viewport.apply();
         renderer.setProjectionMatrix(camera.combined);

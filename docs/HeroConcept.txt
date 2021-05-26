@@ -16,6 +16,7 @@ ACCORDING TO CLASSES:
     -Damage 100%
     -Energy 80%
     -Movement Speed 70%
+    -Armor 120%
     -Special Magic (Fury attack)
     -Weapon (sword)
 
@@ -27,6 +28,7 @@ ACCORDING TO CLASSES:
     -Damage 130%
     -Energy 100%
     -Movement Speed 120%
+    -Armor 50%
     -Special Magic (Blue Laguna)
     -Weapon (staff)
 
@@ -38,6 +40,7 @@ ACCORDING TO CLASSES:
     -Damage 130%
     -Energy 70%
     -Movement Speed 100%
+    -Armor 80%
     -Special Magic (Piercing shot)
     -Weapon (bow)
 

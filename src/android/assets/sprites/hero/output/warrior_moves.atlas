@@ -1,0 +1,41 @@
+
+warrior_moves.png
+size: 1024,32
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+warrior_moves_attack
+  rotate: false
+  xy: 298, 3
+  size: 258, 26
+  orig: 258, 26
+  offset: 0, 0
+  index: -1
+warrior_moves_dead
+  rotate: false
+  xy: 558, 2
+  size: 162, 27
+  orig: 162, 27
+  offset: 0, 0
+  index: -1
+warrior_moves_fall
+  rotate: false
+  xy: 722, 4
+  size: 128, 25
+  orig: 128, 25
+  offset: 0, 0
+  index: -1
+warrior_moves_hurt
+  rotate: false
+  xy: 852, 3
+  size: 97, 26
+  orig: 97, 26
+  offset: 0, 0
+  index: -1
+warrior_moves_walk
+  rotate: false
+  xy: 2, 3
+  size: 294, 26
+  orig: 294, 26
+  offset: 0, 0
+  index: -1

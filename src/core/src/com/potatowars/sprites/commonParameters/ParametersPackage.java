@@ -5,63 +5,76 @@ public class ParametersPackage {
     ShapeArea area;
     ShapePosition position;
     CommonStates states;
-
-    public ParametersPackage(float height, float weight, float x, float y){
-        area = new ShapeArea(height,weight);
-        position = new ShapePosition(x,y);
-
-        states = new CommonStates();
-    }
+    EnergyPoints energyPoints;
+    Damage damage;
+    Speed speed;
 
     public ParametersPackage(){
+        //Physics paramters
         area = new ShapeArea(1,1);
         position = new ShapePosition(0,0);
 
+        //Moving parameters
         states = new CommonStates();
+        energyPoints = new EnergyPoints();
+
+        //attack parameters
+        damage = new Damage();
+        speed  = new Speed();
     }
 
 
-    //Getters
-    public float getX() {
-        return position.getX();
+    //EnergyPoints getters and setters
+    public EnergyPoints getEnergyPoints() {
+        return energyPoints;
     }
 
-    public float getY() {
-        return position.getY();
+    public void setEnergyPoints(EnergyPoints energyPoints) {
+        this.energyPoints = energyPoints;
     }
 
-    public float getHeigt() {
-        return area.getHeight();
-    }
-
-    public float getWeight() {
-        return area.getWeight();
+    //CommonStates getters and setters
+    public void setStates(CommonStates states) {
+        this.states = states;
     }
 
     public CommonStates getStates() {
         return states;
     }
 
-    //Setters
-    public void setX(float x) {
-        position.setX(x);
+    //ShapeArea getters and setters
+    public ShapeArea getArea() {
+        return area;
     }
 
-    public void setY(float y) {
-        position.setY(y);
+    public void setArea(ShapeArea area) {
+        this.area = area;
     }
 
-    public void setHeigt(float height) {
-        area.setHeight(height);
+    //ShapePosition getters and setters
+    public ShapePosition getPosition() {
+        return position;
     }
 
-    public void setWeight(float width) {
-        area.setWeight(width);
+    public void setPosition(ShapePosition position) {
+        this.position = position;
     }
 
-    public void setStates(CommonStates states) {
-        this.states = states;
+    //Damage getters and setters
+    public Damage getDamage() {
+        return damage;
     }
 
+    public void setDamage(Damage damage) {
+        this.damage = damage;
+    }
 
+    //Speed getters and setters
+    public Speed getSpeed() {
+        return speed;
+    }
+
+    public void setSpeed(Speed speed) {
+        this.speed = speed;
+    }
 }

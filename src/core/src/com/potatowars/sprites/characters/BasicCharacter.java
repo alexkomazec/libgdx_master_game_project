@@ -1,86 +1,71 @@
 package com.potatowars.sprites.characters;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.physics.box2d.Body;
-import com.badlogic.gdx.physics.box2d.Filter;
 import com.badlogic.gdx.physics.box2d.Fixture;
+import com.badlogic.gdx.utils.Array;
+import com.badlogic.gdx.utils.Logger;
+import com.potatowars.common.Pair;
 import com.potatowars.sprites.characters.interfaces.CharacterMovement;
 import com.potatowars.sprites.commonParameters.CommonStates;
 import com.potatowars.sprites.commonParameters.ParametersPackage;
-
-import static com.potatowars.sprites.Animation.TextureAtlasCommonContainer.ALL_HERO_FRAMES;
-import static com.potatowars.sprites.Animation.TextureAtlasCommonContainer.heroMoves;
+import com.potatowars.util.ViewportUtils;
 
 public class BasicCharacter extends Sprite implements CharacterMovement {
 
-    //Texture and Image stuff
+    private static final Logger log = new Logger(ViewportUtils.class.getName(), Logger.DEBUG);
 
-    //Texture Regions and Atlas
-    protected TextureRegion characterStand;
+    //There will be set all movements for the current character
+    protected Array< Pair<Animation<TextureRegion>,CommonStates.State> > movements;
+    //Additional parameters that is used for animation and movement direction
     protected float stateTimer;
     protected boolean runningRight;
-
-    //Animaiton
-    protected Animation characterRun;
-
-    //Box2d World stuff
-    public Body b2body;
-
-    protected Fixture fixture;
-
-    //BaseCharacter abilities
-    protected ParametersPackage basicCharacter;
-
-    //States
     protected CommonStates.State currentState;
     protected CommonStates.State previosState;
 
+    //Box2d World stuff, each character has a body, and fixture in Box2d world
+    public Body b2body;
+    protected Fixture fixture;
+
+    //BaseCharacter abilities, each charater has measures, speed, damage, etc.
+    protected ParametersPackage parametersPackage;
+
     protected BasicCharacter(){
-        super(heroMoves.findRegion(ALL_HERO_FRAMES));
+        super();
+        movements = new Array<>();
     }
 
+    protected TextureRegion findSpecifiedPair(CommonStates.State movementState){
+
+        int iterator;
+        boolean found = false;
+
+        for( iterator = 0; iterator < movements.size; iterator++){
+            if(movementState == movements.get(iterator).getT2()){
+                found = true;
+                break;
+            } else{
+                //Go to the next cycle
+            }
+        }
+
+        if(found){
+            return movements.get(iterator).getT1().getKeyFrame(stateTimer,true);
+        }else{
+            log.debug("Development Error:" + movementState.toString() + " has not found");
+            Gdx.app.exit();
+            return null;
+        }
+    }
+
+    //Fixture getters and setters
     public Fixture getFixture(){ return fixture;}
 
     public void setFixture(Fixture fixture){
         this.fixture = fixture;
-    }
-
-    //Position getters
-    public float getX() {
-        return basicCharacter.getX();
-    }
-
-    public float getY() {
-        return basicCharacter.getY();
-    }
-
-    //Area getters
-    public float getHeight() {
-        return basicCharacter.getHeigt();
-    }
-
-    public float getWeight() {
-        return basicCharacter.getWeight();
-    }
-
-    //Position Setters
-    public void setX(int x) {
-        basicCharacter.setX(x);
-    }
-
-    public void setY(int y) {
-        basicCharacter.setY(y);
-    }
-
-    //Area Setters
-    public void setHeigt(float height) {
-        basicCharacter.setHeigt(height);
-    }
-
-    public void setWeight(float width) {
-        basicCharacter.setWeight(width);
     }
 
     //Box2d Body stuff
@@ -96,11 +81,23 @@ public class BasicCharacter extends Sprite implements CharacterMovement {
         return b2body.getPosition().y;
     }
 
-    CommonStates.State getCurrentState(){
-        return basicCharacter.getStates().getCurrentState();
+    //ParametersPackage getters and setters
+    public ParametersPackage getParametersPackage() {
+        return parametersPackage;
     }
 
-    //Interface methods
+    public void setParametersPackage(ParametersPackage parametersPackage) {
+        this.parametersPackage = parametersPackage;
+    }
+
+    public Array<Pair<Animation<TextureRegion>, CommonStates.State>> getMovements() {
+        return movements;
+    }
+
+    public void setMovements(Array<Pair<Animation<TextureRegion>, CommonStates.State>> movements) {
+        this.movements = movements;
+    }
+
     @Override
     public void update(float dt) {
 

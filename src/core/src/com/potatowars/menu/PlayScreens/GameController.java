@@ -14,13 +14,13 @@ public class GameController {
     private Background background;
     private MainCharacter mainCharacter;
     private PotatoWars game;
-    private Hud hud;
+    //private Hud hud;
     private static boolean debug_walking;
     private EnvironmentalDifficulty environmentalDifficulty;
     // == constructors ==
-    public GameController(MainCharacter mainCharacter, PotatoWars game, Hud hud, EnvironmentalDifficulty environmentalDifficulty) {
+    public GameController(MainCharacter mainCharacter, PotatoWars game, /*Hud hud,*/ EnvironmentalDifficulty environmentalDifficulty) {
         this.game = game;
-        this.hud = hud;
+        //this.hud = hud;
         this.environmentalDifficulty = environmentalDifficulty;
         init(mainCharacter);
     }
@@ -46,7 +46,7 @@ public class GameController {
 
         environmentalDifficulty.update(delta);
         //Update Hud
-        hud.update(environmentalDifficulty.getEnvironmentalDifficultyValue());
+        //hud.update(environmentalDifficulty.getEnvironmentalDifficultyValue());
     }
 
     public void handleInput(float dt, MainCharacter mainCharacter){

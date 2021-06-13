@@ -8,6 +8,7 @@ import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.viewport.FitViewport;
+import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.potatowars.PotatoWars;
 import com.potatowars.assets.AssetDescriptors;
@@ -45,7 +46,7 @@ public abstract class MenuScreenBase extends ScreenAdapter {
     // == public methods == //
     @Override
     public void show() {
-        viewport = new FitViewport(GameConfig.GAME_WIDTH, GameConfig.HUD_HEIGHT);
+        viewport = new StretchViewport(ViewPortConfiguration.getPhysicalWidth(), ViewPortConfiguration.getPhysicalHeight());
         stage = new Stage(viewport, game.getBatch());
         Gdx.input.setInputProcessor(stage);
 

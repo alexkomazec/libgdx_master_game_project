@@ -2,27 +2,36 @@ package com.potatowars.config;
 
 public class GameConfig {
 
-    // == Game Size ==
+    /* Size of one tile in the game. Tiles are squared so the dimension of one tile is
+       WORLD_BOX_SIZE x WORLD_BOX_SIZE pixels
+    */
     public static final float WORLD_BOX_SIZE = 16f;
 
-    // == Box2d Scalling ==
-    //INFO: Creating a body with width 16 and height 16, in box2D world it is represented as 16 meters x 16 meters body
-    //      which is too heavy, so scalling is important part.
-    public static final float PPM = 4; // pixels per meter
+    /*  Box2d Scalling
+        INFO: Creating a body using dimensions of one tile means that a body will be WORLD_BOX_SIZE
+        meters high and WORLD_BOX_SIZE wide which can be astronomous mass that leads to heavy
+        bodies that move very slowly. So scalling to some normal height and weight is a solution
+    */
+    public static final float PPM = 16f; // pixels per meter
 
-    public static final float WIDTH = 800f; //pixels
-    public static final float HEIGHT  = 416f; //pixels
+    /*--------------------------------------------------------------------------------------------*/
+    /*---------------------------------Screen dimensions------------------------------------------*/
 
-    public static final float HUD_WIDTH = 800f; // world units
-    public static final float HUD_HEIGHT = 416f; // world units
+    /* Physical dimensions of the screen */
+    public static final float PHYSICAL_WIDTH = 1920f; //pixels
+    public static final float PHYSICAL_HEIGHT = 1080f; //pixels
 
     //== Gameplay Size ==
     public static final  float GAME_WIDTH = 800f; //pixels
-    public static final  float GAME_HEIGHT  = HEIGHT/2; //pixels
+    public static final  float GAME_HEIGHT  = PHYSICAL_HEIGHT /2; //pixels
 
     // == World Size ==
-    public static final float WORLD_WIDTH = WIDTH/WORLD_BOX_SIZE; // world units
-    public static final float WORLD_HEIGHT = HEIGHT/WORLD_BOX_SIZE; // world units
+    public static final float WORLD_WIDTH = PHYSICAL_WIDTH /WORLD_BOX_SIZE; // world units
+    public static final float WORLD_HEIGHT = PHYSICAL_HEIGHT /WORLD_BOX_SIZE; // world units
+
+    /*--------------------------------------------------------------------------------------------*/
+
+
 
     // == Predefined string ==
     public static final String GAME_SOUND = "GAME SOUND";

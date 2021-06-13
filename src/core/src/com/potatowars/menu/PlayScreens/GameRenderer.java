@@ -10,15 +10,12 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.utils.Disposable;
 import com.badlogic.gdx.utils.Logger;
-import com.badlogic.gdx.utils.viewport.FitViewport;
-import com.badlogic.gdx.utils.viewport.Viewport;
 import com.potatowars.PotatoWars;
 import com.potatowars.assets.AssetDescriptors;
 import com.potatowars.assets.RegionNames;
-import com.potatowars.box2d.Box2dBodyBuilder;
 import com.potatowars.box2d.Box2dWorld;
-import com.potatowars.config.GameConfig;
 import com.potatowars.menu.Background;
+import com.potatowars.menu.ViewPortConfiguration;
 import com.potatowars.sprites.characters.playableCharacters.MainCharacter;
 import com.potatowars.tilemap.tilemap_handler.TilemapHandler;
 import com.potatowars.util.GdxUtils;
@@ -28,7 +25,7 @@ import com.potatowars.util.debug.DebugCameraController;
 import static com.potatowars.config.GameConfig.ENABLE_IT;
 import static com.potatowars.config.GameConfig.box2dBodyRenderrer_flag;
 import static com.potatowars.config.GameConfig.cameraDebugging_flag;
-import static com.potatowars.config.GameConfig.mapRenderrer_flag;
+import static com.potatowars.menu.ViewPortConfiguration.calculateViewport;
 
 public class GameRenderer implements Disposable {
 
@@ -39,10 +36,9 @@ public class GameRenderer implements Disposable {
 
     //World view
     private OrthographicCamera camera;
-    private Viewport viewport;
 
     //Hud view
-    private Viewport hudViewport;
+    //private Viewport hudViewport;
 
     //Texture related stuff
     private SpriteBatch batch;
@@ -73,45 +69,53 @@ public class GameRenderer implements Disposable {
         Gdx.app.setLogLevel(Application.LOG_NONE);
 
         this.box2dWorld = box2dWorld;
+
+
+        ViewPortConfiguration.calculateViewport(20, 20);
+
         camera = new OrthographicCamera();
-        viewport = new FitViewport(Box2dBodyBuilder.divideByPpm(GameConfig.GAME_WIDTH), Box2dBodyBuilder.divideByPpm(GameConfig.GAME_HEIGHT) ,camera);
+        camera.setToOrtho(
+                false,
+                ViewPortConfiguration.physicalWidth,
+                ViewPortConfiguration.physicalHeight
+        );
 
-        hudViewport = new FitViewport(GameConfig.HUD_WIDTH/GameConfig.PPM, GameConfig.HUD_HEIGHT/GameConfig.PPM, camera);
         batch = game.getBatch();
-
 
         // create debug camera controller
         debugCameraController = new DebugCameraController();
-        debugCameraController.setStartPosition(viewport.getWorldWidth()/2, viewport.getWorldHeight()*2);
+        debugCameraController.setStartPosition(mainCharacter.b2body.getPosition().x, mainCharacter.b2body.getPosition().y);
+
         renderer = new ShapeRenderer();
 
         //Getting texture atlas from asset manager
         TextureAtlas backGround = assetManager.get(AssetDescriptors.BACK_GROUND);
 
         backgroundRegion = backGround.findRegion(RegionNames.BACKGROUND);
-
     }
 
 
     // == public methods ==
     public void render(float delta) {
 
+        // clear screen
+        GdxUtils.clearScreen();
+
+        // Set the view to Map renderer
+        TilemapHandler.OrthogonalTiledMapRendererSetView(camera);
+
+        //Start the box2d world
         box2dWorld.getWorld().step(1/60f,6,2);
+
         camera.position.set(mainCharacter.b2body.getPosition().x, mainCharacter.b2body.getPosition().y,0);
+        camera.update();
 
         if(ENABLE_IT == cameraDebugging_flag ){
             debugCameraController.handleDebugInput(delta);
             debugCameraController.applyTo(camera);
         }
 
-        // clear screen
-        GdxUtils.clearScreen();
-        camera.update();
-
-        if(ENABLE_IT == mapRenderrer_flag) {
-            TilemapHandler.OrthogonalTiledMapRendererSetView(camera);
-            TilemapHandler.OrthogonalTiledMapRendererRender();
-        }
+        TilemapHandler.OrthogonalTiledMapRendererRender();
 
         if(ENABLE_IT == box2dBodyRenderrer_flag) {
             box2dWorld.Box2DDebugRendererRender(box2dWorld.getWorld(), camera.combined);
@@ -124,8 +128,8 @@ public class GameRenderer implements Disposable {
         batch.end();
 
         //Rendering HUD as a top layer
-        game.getBatch().setProjectionMatrix(hud.stage.getCamera().combined);
-        hud.stage.draw();
+        //game.getBatch().setProjectionMatrix(hud.stage.getCamera().combined);
+        //hud.stage.draw();
 
         //renderGamePlay();
 
@@ -134,8 +138,8 @@ public class GameRenderer implements Disposable {
     }
 
     public void resize(int width, int height) {
-        viewport.update(width, height, true);
-        hudViewport.update(width, height, true);
+        calculateViewport(20, 20);
+        camera.setToOrtho(false, ViewPortConfiguration.viewportWidth, ViewPortConfiguration.viewportHeight);
     }
 
     @Override
@@ -147,7 +151,7 @@ public class GameRenderer implements Disposable {
     // This method is currently unused but planned to used in the future as a kind
     //of gameplay effects
     private void renderGamePlay() {
-        viewport.apply();
+        //viewport.apply();
         batch.setProjectionMatrix(camera.combined);
         batch.begin();
 
@@ -164,13 +168,13 @@ public class GameRenderer implements Disposable {
     // Debbuging methods that is currently unused
     // It can be used for shape rendering
     private void renderDebug() {
-        viewport.apply();
+        //viewport.apply();
         renderer.setProjectionMatrix(camera.combined);
         renderer.begin(ShapeRenderer.ShapeType.Line);
 
         renderer.end();
 
-        ViewportUtils.drawGrid(viewport, renderer);
+        //ViewportUtils.drawGrid(viewport, renderer);
     }
 
 }

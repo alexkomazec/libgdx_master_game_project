@@ -43,7 +43,7 @@ public class DebugCameraConfig {
     private static final int DEFAULT_RESET_KEY = Input.Keys.BACKSPACE;
     private static final int DEFAULT_LOG_KEY = Input.Keys.ENTER;
 
-    private static final float DEFAULT_MOVE_SPEED = 750.0f;
+    private static final float DEFAULT_MOVE_SPEED = 50.0f;
     private static final float DEFAULT_ZOOM_SPEED = 2.0f;
     private static final float DEFAULT_MAX_ZOOM_IN = 0.20f;
     private static final float DEFAULT_MAX_ZOOM_OUT = 30f;

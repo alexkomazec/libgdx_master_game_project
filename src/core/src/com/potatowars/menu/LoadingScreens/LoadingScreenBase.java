@@ -5,10 +5,11 @@ import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.utils.Logger;
-import com.badlogic.gdx.utils.viewport.FitViewport;
+import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.potatowars.PotatoWars;
 import com.potatowars.config.GameConfig;
+import com.potatowars.menu.ViewPortConfiguration;
 import com.potatowars.util.GdxUtils;
 
 public class LoadingScreenBase extends ScreenAdapter {
@@ -16,7 +17,7 @@ public class LoadingScreenBase extends ScreenAdapter {
     // == constants ==
     protected static final Logger log = new Logger(LoadingIntroScreen.class.getName(), Logger.DEBUG);
 
-    protected static final float PROGRESS_BAR_WIDTH = GameConfig.HUD_WIDTH / 2f; // world units
+    protected static final float PROGRESS_BAR_WIDTH = GameConfig.PHYSICAL_WIDTH / 2f; // world units
     protected static final float PROGRESS_BAR_HEIGHT = 60; // world units
 
     // == attributes ==
@@ -41,10 +42,18 @@ public class LoadingScreenBase extends ScreenAdapter {
     @Override
     public void show() {
         log.debug("show");
-        camera = new OrthographicCamera();
-        viewport = new FitViewport(GameConfig.HUD_WIDTH, GameConfig.HUD_HEIGHT, camera);
-        renderer = new ShapeRenderer();
 
+        this.camera = new OrthographicCamera();
+        this.camera.setToOrtho(
+                false,
+                ViewPortConfiguration.getPhysicalWidth(),
+                ViewPortConfiguration.getPhysicalHeight()
+        );
+
+        this.viewport = new ScreenViewport(camera);
+        this.renderer = new ShapeRenderer();
+
+        ViewPortConfiguration.calculateViewport(20, 20);
         //dummyHero = new DummyHero(game.getBox2dWorld().getWorld(),0,0);
         //game.getTilemapHandler().createMap("maps/valleyOfTheHungry_Level1/valleyOfTheHungry.tmx",dummyHero);
     }
@@ -54,18 +63,21 @@ public class LoadingScreenBase extends ScreenAdapter {
         update(delta);
 
         GdxUtils.clearScreen();
-        viewport.apply();
-        renderer.setProjectionMatrix(camera.combined);
-        renderer.begin(ShapeRenderer.ShapeType.Filled);
+
+        /*Apply viewport dimensions to camera*/
+        this.viewport.apply();
+
+        this.renderer.setProjectionMatrix(this.camera.combined);
+        this.renderer.begin(ShapeRenderer.ShapeType.Filled);
 
         draw();
 
-        renderer.end();
+        this.renderer.end();
     }
 
     @Override
     public void resize(int width, int height) {
-        viewport.update(width, height, true);
+        this.viewport.update(width, height, true);
     }
 
     @Override
@@ -77,31 +89,31 @@ public class LoadingScreenBase extends ScreenAdapter {
     @Override
     public void dispose() {
         log.debug("dispose");
-        renderer.dispose();
-        renderer = null;
+        this.renderer.dispose();
+        this.renderer = null;
     }
 
     // == private methods ==
     private void update(float delta) {
         // progress is between 0 and 1
-        progress = assetManager.getProgress();
+        this.progress = this.assetManager.getProgress();
 
         // update returns true when all assets are loaded
-        if(assetManager.update()) {
-            waitTime -= delta;
+        if(this.assetManager.update()) {
+            this.waitTime -= delta;
 
-            if(waitTime <= 0) {
-                changeScreen = true;
+            if(this.waitTime <= 0) {
+                this.changeScreen = true;
             }
         }
     }
 
     private void draw() {
-        float progressBarX = (GameConfig.HUD_WIDTH - PROGRESS_BAR_WIDTH) / 2f;
-        float progressBarY = (GameConfig.HUD_HEIGHT - PROGRESS_BAR_HEIGHT) / 2f;
+        float progressBarX = (GameConfig.PHYSICAL_WIDTH - PROGRESS_BAR_WIDTH) / 2f;
+        float progressBarY = (GameConfig.PHYSICAL_HEIGHT - PROGRESS_BAR_HEIGHT) / 2f;
 
-        renderer.rect(progressBarX, progressBarY,
-                progress * PROGRESS_BAR_WIDTH, PROGRESS_BAR_HEIGHT
+        this.renderer.rect(progressBarX, progressBarY,
+                this.progress * PROGRESS_BAR_WIDTH, PROGRESS_BAR_HEIGHT
         );
     }
 

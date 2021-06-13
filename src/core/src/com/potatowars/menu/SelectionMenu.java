@@ -18,11 +18,9 @@ import com.potatowars.menu.LoadingScreens.LoadingGame;
 public class SelectionMenu extends MenuScreenBase {
 
     GameConfig.HeroType heroSelected;
-    Viewport viewport;
 
     public SelectionMenu(PotatoWars game,Viewport viewport) {
         super(game);
-        this.viewport = viewport;
         heroSelected = GameConfig.HeroType.WARRIOR_SELECTED;
     }
 

@@ -1,17 +1,14 @@
 package com.potatowars.menu.PlayScreens;
 
 import com.badlogic.gdx.scenes.scene2d.Actor;
-import com.badlogic.gdx.utils.TimeUtils;
 import com.potatowars.PotatoWars;
 import com.potatowars.box2d.Box2dWorld;
 import com.potatowars.config.GameConfig;
 import com.potatowars.menu.EndGameScreens.EndLevelScreen;
 import com.potatowars.menu.MenuScreenBase;
+import com.potatowars.menu.ViewPortConfiguration;
 import com.potatowars.sprites.characters.playableCharacters.MainCharacter;
 import com.potatowars.sprites.commonParameters.EnvironmentalDifficulty;
-
-import static com.badlogic.gdx.utils.TimeUtils.nanoTime;
-import static com.badlogic.gdx.utils.TimeUtils.nanosToMillis;
 
 public class PlayScreen extends MenuScreenBase {
     //PlayScreen is the top view class in which everything game play related will be happening
@@ -44,7 +41,7 @@ public class PlayScreen extends MenuScreenBase {
         this.mainCharacter = mainCharacter;
 
         environmentalDifficultyGenerator = new EnvironmentalDifficulty(GameConfig.LEVEL1);
-        this.hud = new Hud(game.getBatch(),mainCharacter,environmentalDifficultyGenerator);
+        //this.hud = new Hud(game.getBatch(),mainCharacter,environmentalDifficultyGenerator);
         //lifeTimer = nanosToMillis(nanoTime());
     }
 
@@ -56,7 +53,7 @@ public class PlayScreen extends MenuScreenBase {
 
     @Override
     public void show() {
-        controller = new GameController(mainCharacter,game,hud,environmentalDifficultyGenerator);
+        controller = new GameController(mainCharacter,game,/*hud,*/environmentalDifficultyGenerator);
         renderer = new GameRenderer(game,controller,assetManager,box2dWorld, mainCharacter,hud);
     }
 
@@ -75,6 +72,7 @@ public class PlayScreen extends MenuScreenBase {
 
     @Override
     public void resize(int width, int height) {
+        ViewPortConfiguration.calculateViewport(20, 20);
         renderer.resize(width, height);
     }
 
@@ -96,7 +94,7 @@ public class PlayScreen extends MenuScreenBase {
     @Override
     public void dispose() {
         renderer.dispose();
-        hud.dispose();
+        //hud.dispose();
     }
 
 

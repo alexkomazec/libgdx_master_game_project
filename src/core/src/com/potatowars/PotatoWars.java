@@ -9,6 +9,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Logger;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
+import com.potatowars.assets.AssetManagmentHandler;
 import com.potatowars.box2d.Box2dWorld;
 import com.potatowars.config.GameConfig;
 import com.potatowars.menu.LoadingScreens.LoadingIntroScreen;
@@ -17,34 +18,27 @@ import com.potatowars.menu.ViewPortConfiguration;
 public class PotatoWars extends Game {
 
 	//Resources stuff
-	private AssetManager assetManager;
 	private SpriteBatch batch;
+	AssetManagmentHandler assetManagmentHandler;
 
 	@Override
 	public void create() {
-		assetManager = new AssetManager();
-		assetManager.getLogger().setLevel(Logger.DEBUG);
 
 		batch = new SpriteBatch();
-
 		ViewPortConfiguration.setupPhysicalSize();
-
-		//tilemapHandler = new TilemapHandler(box2dWorld);
+		assetManagmentHandler = new AssetManagmentHandler();
 
 		setScreen(new LoadingIntroScreen(this));
+	}
 
+	public AssetManagmentHandler getAssetManagmentHandler() {
+		return assetManagmentHandler;
 	}
 
 	@Override
 	public void dispose() {
-		assetManager.dispose();
+		assetManagmentHandler.getAssetManager().dispose();
 		batch.dispose();
-	}
-
-	/*Getters*/
-
-	public AssetManager getAssetManager() {
-		return assetManager;
 	}
 
 	public SpriteBatch getBatch() {

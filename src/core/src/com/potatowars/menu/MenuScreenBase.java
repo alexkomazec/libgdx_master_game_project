@@ -12,6 +12,7 @@ import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.potatowars.PotatoWars;
 import com.potatowars.assets.AssetDescriptors;
+import com.potatowars.assets.AssetManagmentHandler;
 import com.potatowars.common.GameManager;
 import com.potatowars.config.GameConfig;
 import com.potatowars.util.GdxUtils;
@@ -24,7 +25,7 @@ public abstract class MenuScreenBase extends ScreenAdapter {
     protected final PotatoWars game;
 
     //An asset manager
-    protected final AssetManager assetManager;
+    protected final AssetManagmentHandler assetManager;
 
     //Viewport
     private Viewport viewport;
@@ -38,9 +39,9 @@ public abstract class MenuScreenBase extends ScreenAdapter {
     // == constructor == //
     public MenuScreenBase(PotatoWars game) {
         this.game = game;
-        this.assetManager = game.getAssetManager();
-        this.music = assetManager.get(AssetDescriptors.BACKGROUND_MUSIC);
-        this.sound = assetManager.get(AssetDescriptors.CLICK_SOUND);
+        this.assetManager = game.getAssetManagmentHandler();
+        this.music = assetManager.getResource(AssetDescriptors.BACKGROUND_MUSIC);
+        this.sound = assetManager.getResource(AssetDescriptors.CLICK_SOUND);
     }
 
     // == public methods == //

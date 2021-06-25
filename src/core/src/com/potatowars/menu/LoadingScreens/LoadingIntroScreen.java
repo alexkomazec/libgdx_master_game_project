@@ -18,12 +18,13 @@ public class LoadingIntroScreen extends LoadingScreenBase {
     @Override
     public void show() {
         super.show();
-
-        assetManager.load(AssetDescriptors.BACKGROUND_MUSIC);
-        assetManager.load(AssetDescriptors.CLICK_SOUND);
-        assetManager.load(AssetDescriptors.FONT);
-        assetManager.load(AssetDescriptors.BACK_GROUND);
-        assetManager.load(AssetDescriptors.UI_SKIN);
+        game.getAssetManagmentHandler().loadResource(
+                AssetDescriptors.BACKGROUND_MUSIC,
+                AssetDescriptors.CLICK_SOUND,
+                AssetDescriptors.FONT,
+                AssetDescriptors.BACK_GROUND,
+                AssetDescriptors.UI_SKIN
+        );
     }
 
     @Override

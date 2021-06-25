@@ -10,9 +10,7 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 
 import javax.swing.text.View;
 
-/**
- * Created by goran on 24/08/2016.
- */
+
 public class DebugCameraController {
 
     // == constants ==

@@ -8,6 +8,7 @@ import com.badlogic.gdx.utils.Logger;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.potatowars.PotatoWars;
+import com.potatowars.assets.AssetManagmentHandler;
 import com.potatowars.config.GameConfig;
 import com.potatowars.menu.ViewPortConfiguration;
 import com.potatowars.util.GdxUtils;
@@ -30,12 +31,12 @@ public class LoadingScreenBase extends ScreenAdapter {
     protected boolean changeScreen;
 
     protected final PotatoWars game;
-    protected final AssetManager assetManager;
+    protected final AssetManagmentHandler assetManager;
 
     // == constructors ==
     public LoadingScreenBase(PotatoWars game) {
         this.game = game;
-        assetManager = game.getAssetManager();
+        assetManager = game.getAssetManagmentHandler();
     }
 
     // == public methods ==
@@ -99,7 +100,7 @@ public class LoadingScreenBase extends ScreenAdapter {
         this.progress = this.assetManager.getProgress();
 
         // update returns true when all assets are loaded
-        if(this.assetManager.update()) {
+        if(this.assetManager.updateAssetLoading()) {
             this.waitTime -= delta;
 
             if(this.waitTime <= 0) {

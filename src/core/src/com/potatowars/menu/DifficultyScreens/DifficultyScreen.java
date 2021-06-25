@@ -36,8 +36,8 @@ public class DifficultyScreen extends MenuScreenBase {
         Table table = new Table();
         table.defaults().pad(15);
 
-        TextureAtlas background = assetManager.get(AssetDescriptors.BACK_GROUND);
-        Skin uiSkin = assetManager.get(AssetDescriptors.UI_SKIN);
+        TextureAtlas background = assetManager.getResource(AssetDescriptors.BACK_GROUND);
+        Skin uiSkin = assetManager.getResource(AssetDescriptors.UI_SKIN);
 
         TextureRegion backgroundRegion = background.findRegion(RegionNames.BACKGROUND);
         table.setBackground(new TextureRegionDrawable(backgroundRegion));

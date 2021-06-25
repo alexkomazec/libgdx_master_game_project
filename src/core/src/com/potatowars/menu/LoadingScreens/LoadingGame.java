@@ -46,59 +46,49 @@ public class LoadingGame extends LoadingScreenBase {
         box2dWorld.getWorld().setContactListener(new WorldContactListener());
 
         //Load all frames to the asset manager
-        assetManager.load(AssetDescriptors.HERO_FRAMES);
+        assetManager.loadResource(AssetDescriptors.HERO_FRAMES);
+
+        TextureAtlas heroTextureAtlas;
 
         //Allocating memory for living and non-living objects in the game
         switch(heroSelected){
             case WARRIOR_SELECTED:
 
                  mainCharacter = new Warrior(game);
-                //Check if the asset is already laoded. If so, do not load it again
-                if(!assetManager.isLoaded(AssetDescriptors.WARRIOR_FRAMES)) {
 
                     //Load the texture atlas into the asset Manager
-                    assetManager.load(AssetDescriptors.WARRIOR_FRAMES);
-                    assetManager.finishLoading();
+                    assetManager.loadResource(AssetDescriptors.WARRIOR_FRAMES);
 
-                }
+                 heroTextureAtlas = assetManager.getResource(AssetDescriptors.WARRIOR_FRAMES);
 
                 //Put out the Texture atlas from the pool
-                TextureAtlasCommonContainer.addAllHeroTextureRegions(mainCharacter,assetManager.get(AssetDescriptors.WARRIOR_FRAMES),WARRIOR_FRAME_ATLAS);
+                TextureAtlasCommonContainer.addAllHeroTextureRegions(mainCharacter,heroTextureAtlas,WARRIOR_FRAME_ATLAS);
 
                 break;
             case MAGE_SELECTED:
                 mainCharacter = new Mage(game);
-                //Check if the asset is already laoded. If so, do not load it again
-                if(!assetManager.isLoaded(AssetDescriptors.MAGE_FRAMES)) {
 
-                    //Load the texture atlas into the asset Manager
-                    assetManager.load(AssetDescriptors.MAGE_FRAMES);
-                    assetManager.finishLoading();
+                //Load the texture atlas into the asset Manager
+                assetManager.loadResource(AssetDescriptors.MAGE_FRAMES);
 
-                }
-
+                heroTextureAtlas = assetManager.getResource(AssetDescriptors.MAGE_FRAMES);
                 //Put out the Texture atlas from the pool
-                TextureAtlasCommonContainer.addAllHeroTextureRegions(mainCharacter,assetManager.get(AssetDescriptors.MAGE_FRAMES),MAGE_FRAME_ATLAS);
+                TextureAtlasCommonContainer.addAllHeroTextureRegions(mainCharacter,heroTextureAtlas,MAGE_FRAME_ATLAS);
 
                 break;
             case HUNTER_SELECTED:
 
                 mainCharacter = new Hunter(game);
-                //Check if the asset is already laoded. If so, do not load it again
-                if(!assetManager.isLoaded(AssetDescriptors.HUNTER_FRAMES)) {
+                assetManager.loadResource(AssetDescriptors.HUNTER_FRAMES);
 
-                    //Load the texture atlas into the asset Manager
-                    assetManager.load(AssetDescriptors.HUNTER_FRAMES);
-                    assetManager.finishLoading();
-
-                }
+                heroTextureAtlas = assetManager.getResource(AssetDescriptors.HUNTER_FRAMES);
 
                 //Put out the Texture atlas from the pool
-                TextureAtlasCommonContainer.addAllHeroTextureRegions(mainCharacter,assetManager.get(AssetDescriptors.HUNTER_FRAMES),HUNTER_FRAME_ATLAS);
+                TextureAtlasCommonContainer.addAllHeroTextureRegions(mainCharacter,heroTextureAtlas,HUNTER_FRAME_ATLAS);
 
                 break;
             default:
-                assetManager.load(AssetDescriptors.WARRIOR_FRAMES);
+                assetManager.loadResource(AssetDescriptors.WARRIOR_FRAMES);
                 mainCharacter = new Warrior(game);
         }
 

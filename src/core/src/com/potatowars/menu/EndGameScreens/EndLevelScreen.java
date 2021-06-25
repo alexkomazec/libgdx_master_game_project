@@ -26,10 +26,10 @@ public class EndLevelScreen extends MenuScreenBase {
         Table table = new Table();
 
         //Getting texture atlas from asset manager
-        TextureAtlas backGround = assetManager.get(AssetDescriptors.BACK_GROUND);
+        TextureAtlas backGround = assetManager.getResource(AssetDescriptors.BACK_GROUND);
 
         //Getting skin for all the menus
-        Skin uiskin = assetManager.get(AssetDescriptors.UI_SKIN);
+        Skin uiskin = assetManager.getResource(AssetDescriptors.UI_SKIN);
 
         TextureRegion backgroundRegion = backGround.findRegion(RegionNames.BACKGROUND);
         table.setBackground(new TextureRegionDrawable(backgroundRegion));

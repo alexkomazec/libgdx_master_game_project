@@ -80,10 +80,10 @@ public class GameConfig {
 
     // == Names of Level Maps
     public static final String LEVEL1 = "maps/valleyOfTheHungry_Level1/valleyOfTheHungry.tmx";
-    public static final String LEVEL2 = "Snow wave";
-    public static final String LEVEL3 = "Eternal summer";
-    public static final String LEVEL4 = "The Great Sea";
-    public static final String LEVEL5 = "Kepler 51b";
+    public static final String LEVEL2 = "SnowWave";
+    public static final String LEVEL3 = "EternalSummer";
+    public static final String LEVEL4 = "TheGreatSea";
+    public static final String LEVEL5 = "Kepler51b";
 
     // == Box2D types of Bodies
     public static final int iSTATIC = 0;

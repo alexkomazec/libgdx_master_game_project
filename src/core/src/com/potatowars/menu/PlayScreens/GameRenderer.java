@@ -12,6 +12,7 @@ import com.badlogic.gdx.utils.Disposable;
 import com.badlogic.gdx.utils.Logger;
 import com.potatowars.PotatoWars;
 import com.potatowars.assets.AssetDescriptors;
+import com.potatowars.assets.AssetManagmentHandler;
 import com.potatowars.assets.RegionNames;
 import com.potatowars.box2d.Box2dWorld;
 import com.potatowars.menu.Background;
@@ -56,7 +57,7 @@ public class GameRenderer implements Disposable {
     Hud hud;
 
     // == constructors ==
-    public GameRenderer(PotatoWars game, GameController controller, AssetManager assetManager, Box2dWorld box2dWorld, MainCharacter mainCharacter,Hud hud) {
+    public GameRenderer(PotatoWars game, GameController controller, AssetManagmentHandler assetManager, Box2dWorld box2dWorld, MainCharacter mainCharacter, Hud hud) {
         this.controller = controller;
         this.mainCharacter = mainCharacter;
         this.game   =   game;
@@ -65,7 +66,7 @@ public class GameRenderer implements Disposable {
     }
 
     // == init ==
-    private void init(AssetManager assetManager,Box2dWorld box2dWorld) {
+    private void init(AssetManagmentHandler assetManager,Box2dWorld box2dWorld) {
         Gdx.app.setLogLevel(Application.LOG_NONE);
 
         this.box2dWorld = box2dWorld;
@@ -89,7 +90,7 @@ public class GameRenderer implements Disposable {
         renderer = new ShapeRenderer();
 
         //Getting texture atlas from asset manager
-        TextureAtlas backGround = assetManager.get(AssetDescriptors.BACK_GROUND);
+        TextureAtlas backGround = assetManager.getResource(AssetDescriptors.BACK_GROUND);
 
         backgroundRegion = backGround.findRegion(RegionNames.BACKGROUND);
     }

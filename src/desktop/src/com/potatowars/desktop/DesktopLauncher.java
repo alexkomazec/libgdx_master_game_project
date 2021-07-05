@@ -20,7 +20,7 @@ public class DesktopLauncher {
 		config.title = "Potato Wars";
 		config.useGL30 = false;
 
-		Application app = new LwjglApplication(new PotatoWars(), config);
+		Application app = new LwjglApplication(PotatoWars.getInstance(), config);
 		Gdx.app = app;
 
 		/* Legend of Debug level

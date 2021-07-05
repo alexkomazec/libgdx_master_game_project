@@ -31,8 +31,5 @@ public class AssetPaths {
     // == menu sounds ==
     public static final String CLICK_BUTTON = "audio/sounds/coin.wav";
 
-    // == level names ==
-    public static final String LEVEL1 = "maps/valleyOfTheHungry_Level1/valleyOfTheHungry.tmx";
-
     private AssetPaths(){}
 }

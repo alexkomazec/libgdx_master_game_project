@@ -1,4 +1,4 @@
-package com.potatowars.tilemap.tilemap_handler;
+package com.potatowars.map.tilemap_handler;
 
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.maps.MapGroupLayer;
@@ -21,32 +21,41 @@ import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Disposable;
 import com.potatowars.box2d.Box2dBodyBuilder;
 import com.potatowars.config.GameConfig;
+import com.potatowars.map.mapList.Map;
 import com.potatowars.sprites.characters.playableCharacters.MainCharacter;
 import com.potatowars.sprites.items.ExitGoal;
 import com.potatowars.sprites.items.InteractiveTileObject;
 
 public class TilemapHandler implements Disposable {
 
-    /*Getting the tiled map to the game*/
-
     //Load the map into the code
     private static TmxMapLoader mapLoader;
-    //Tiled Map reference
-    private static TiledMap map;
 
     //This is what renders our map to the screen
     private static OrthogonalTiledMapRenderer rendererTiledMap;
 
     private TilemapHandler() { }
 
+    public static TiledMap getTiledMap(String fileName){
+
+        mapLoader = new TmxMapLoader();
+
+        //Loading level file from assets
+        TiledMap map = mapLoader.load(fileName);
+
+        return map;
+    }
+
 
     public static void createMap(World world, String fileName,
                                  //Living and Non-Living objects
+                                 TiledMap tiledMap,
                                  MainCharacter mainCharacter,
                                  Array<InteractiveTileObject> interactiveTiledObjects)
     {
         parseTiledObjectLayer(world,fileName,
                 //Living and Non-Living objects
+                tiledMap,
                 mainCharacter,
                 interactiveTiledObjects);
     }
@@ -80,7 +89,7 @@ public class TilemapHandler implements Disposable {
                 // piece of memmory that dummyPlayer reference (coppied one) will be pointing to, so passed, original dummyPlayer reference will be untouched
                 //TODO: REF1: Think about a better solution. This solution works well but portability is poor.
 
-                if(GameConfig.iDYNAMIC == bodyType) {
+                if(GameConfig.iDYNAMIC == bodyType) {/*Dynamic bodies*/
                     if (null != object.getName()) {
                         //If dynamic object has a name
                         if (object.getName().contains(GameConfig.PLAYER_NAME)) {
@@ -108,7 +117,7 @@ public class TilemapHandler implements Disposable {
                                 shape,
                                 mainCharacter);
                     }
-                }
+                }/*Static bodies*/
                 else if(GameConfig.iSTATIC == bodyType){
                     if (null != object.getName()) {
                         //If the static object has a name
@@ -213,20 +222,18 @@ public class TilemapHandler implements Disposable {
 
     public static void parseTiledObjectLayer(World world, String fileName,
                                              //Living and Non-Living objects
+                                             TiledMap tiledMap,
                                              MainCharacter mainCharacter,
                                              Array<InteractiveTileObject> interactiveTiledObjects) {
 
         mapLoader = new TmxMapLoader();
 
-        //Loading level file from assets
-        TiledMap map = mapLoader.load(fileName);
-
         //Setting TiledMap renderer
-        rendererTiledMap = new OrthogonalTiledMapRenderer(map,1/GameConfig.PPM);
+        rendererTiledMap = new OrthogonalTiledMapRenderer(tiledMap,1/GameConfig.PPM);
         //rendererTiledMap = new OrthogonalTiledMapRenderer(map);
 
         //Getting layers from the level file
-        MapLayers mapLayers = map.getLayers();
+        MapLayers mapLayers = tiledMap.getLayers();
 
         //Go through all the folders/layers/objects in the map
         for(MapLayer mapLayer : mapLayers) {

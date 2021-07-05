@@ -33,36 +33,17 @@ import static com.potatowars.sprites.commonParameters.CommonStates.State.JUMPING
 import static com.potatowars.sprites.commonParameters.CommonStates.State.RUNNING;
 import static com.potatowars.sprites.commonParameters.CommonStates.State.STANDING;
 
-public class TextureAtlasCommonContainer {
+public class AnimationManager {
+
+    /*
+        ClassName: AnimationManager
+        Description:    Used to transform AssetManager into frames and populate character animation
+                        movement
+    */
 
     private static final Logger log = new Logger(DebugCameraController.class.getName(), Logger.DEBUG);
 
-    //Beginning of hero stuff ======================================================================
-
-    //Atlas
-    private static Array<TextureAtlasPack> heroMoves;
-    public static final String ALL_HERO_FRAMES = "warrior_moves";
-
-    //Atlas information
-    public static final int HERO_MOVES_PNG_WIDTH = 416;
-    public static final int HERO_MOVES_PNG_HEIGHT = 672;
-
-    //Number of frames in a row and column
-    public static final int NUMBER_OF_COLUMS = 13;
-    public static final int NUMBER_OF_ROWS = 21;
-
-    //Frame width and height
-    public static final int FRAME_WIDTH = HERO_MOVES_PNG_WIDTH/NUMBER_OF_COLUMS;
-    public static final int FRAME_HEIGHT = HERO_MOVES_PNG_HEIGHT/NUMBER_OF_ROWS;
-
-    public static Array<MovementType> movesHero = new Array<MovementType>();
-
-    //Number of frames in animations
-    private static final int NUMBER_OF_FRAMES_RUNNING = 7;
-
-    //End of hero stuff ============================================================================
-
-    private TextureAtlasCommonContainer() {}
+    private AnimationManager() {}
 
     public static void addAllHeroTextureRegions(MainCharacter mainCharacter, TextureAtlas textureAtlas, String textreAtlasPath){
 

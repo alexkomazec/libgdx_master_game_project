@@ -2,7 +2,6 @@ package com.potatowars.menu.PlayScreens;
 
 import com.badlogic.gdx.Application;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
@@ -18,9 +17,8 @@ import com.potatowars.box2d.Box2dWorld;
 import com.potatowars.menu.Background;
 import com.potatowars.menu.ViewPortConfiguration;
 import com.potatowars.sprites.characters.playableCharacters.MainCharacter;
-import com.potatowars.tilemap.tilemap_handler.TilemapHandler;
+import com.potatowars.map.tilemap_handler.TilemapHandler;
 import com.potatowars.util.GdxUtils;
-import com.potatowars.util.ViewportUtils;
 import com.potatowars.util.debug.DebugCameraController;
 
 import static com.potatowars.config.GameConfig.ENABLE_IT;
@@ -71,9 +69,6 @@ public class GameRenderer implements Disposable {
 
         this.box2dWorld = box2dWorld;
 
-
-        ViewPortConfiguration.calculateViewport(20, 20);
-
         camera = new OrthographicCamera();
         camera.setToOrtho(
                 false,
@@ -98,6 +93,8 @@ public class GameRenderer implements Disposable {
 
     // == public methods ==
     public void render(float delta) {
+
+        ViewPortConfiguration.calculateViewport(20, 20);
 
         // clear screen
         GdxUtils.clearScreen();

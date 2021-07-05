@@ -41,6 +41,7 @@ public class PlayScreen extends MenuScreenBase {
         this.mainCharacter = mainCharacter;
 
         environmentalDifficultyGenerator = new EnvironmentalDifficulty(GameConfig.LEVEL1);
+
         //this.hud = new Hud(game.getBatch(),mainCharacter,environmentalDifficultyGenerator);
         //lifeTimer = nanosToMillis(nanoTime());
     }

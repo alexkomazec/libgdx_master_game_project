@@ -54,7 +54,6 @@ public class LoadingScreenBase extends ScreenAdapter {
         this.viewport = new ScreenViewport(camera);
         this.renderer = new ShapeRenderer();
 
-        ViewPortConfiguration.calculateViewport(20, 20);
         //dummyHero = new DummyHero(game.getBox2dWorld().getWorld(),0,0);
         //game.getTilemapHandler().createMap("maps/valleyOfTheHungry_Level1/valleyOfTheHungry.tmx",dummyHero);
     }

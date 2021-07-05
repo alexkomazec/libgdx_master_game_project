@@ -8,7 +8,7 @@ public class ViewPortConfiguration {
     private static final String CLASS_NAME = Viewport.class.getSimpleName();
 
     //Viewport measures => Visible area
-    public static float  viewportWidth;
+    public static  float viewportWidth;
     public static  float viewportHeight;
     
     //Virtul Measures => Measure
@@ -59,11 +59,27 @@ public class ViewPortConfiguration {
         Gdx.app.debug(CLASS_NAME, " Physical measure: (" + physicalWidth + "," + physicalHeight + ")" );
     }
 
+    private boolean checkBoundariesCollision(float viewPortWidth, float viewPortHeight){
+
+        /*float x_position = debugCameraController.getPosition().x;
+        float y_position = debugCameraController.getPosition().y;
+
+        //Check if the camera area is collided to the right map bound
+        if( (int)(x_position + viewPortWidth/2) >= (int)map.getProperties().get("width")){
+            Gdx.app.debug(TAG, "Yes!" );
+        }else{
+
+        }*/
+        return true;
+    }
+
     public static void setupPhysicalSize(){
 
         physicalWidth = Gdx.graphics.getWidth();
         physicalHeight = Gdx.graphics.getHeight();
     }
+
+
 
     public static float getPhysicalWidth(){
         return physicalWidth = Gdx.graphics.getWidth();

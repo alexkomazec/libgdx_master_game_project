@@ -1,6 +1,5 @@
 package com.potatowars.menu.LoadingScreens;
 
-import com.badlogic.gdx.assets.AssetDescriptor;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.viewport.Viewport;
@@ -10,20 +9,23 @@ import com.potatowars.assets.AssetPaths;
 import com.potatowars.box2d.Box2dWorld;
 import com.potatowars.box2d.WorldContactListener;
 import com.potatowars.config.GameConfig;
+import com.potatowars.map.MapLoadingObserver;
+import com.potatowars.map.MapManager;
+import com.potatowars.map.tilemap_handler.MapLoadingSubject;
 import com.potatowars.menu.PlayScreens.PlayScreen;
-import com.potatowars.sprites.Animation.TextureAtlasCommonContainer;
+import com.potatowars.sprites.Animation.AnimationManager;
 import com.potatowars.sprites.characters.playableCharacters.MainCharacter;
 import com.potatowars.sprites.characters.playableCharacters.classes.Hunter;
 import com.potatowars.sprites.characters.playableCharacters.classes.Mage;
 import com.potatowars.sprites.characters.playableCharacters.classes.Warrior;
 import com.potatowars.sprites.items.InteractiveTileObject;
-import com.potatowars.tilemap.tilemap_handler.TilemapHandler;
+import com.potatowars.map.tilemap_handler.TilemapHandler;
 
 import static com.potatowars.assets.AssetPaths.HUNTER_FRAME_ATLAS;
 import static com.potatowars.assets.AssetPaths.MAGE_FRAME_ATLAS;
 import static com.potatowars.assets.AssetPaths.WARRIOR_FRAME_ATLAS;
 
-public class LoadingGame extends LoadingScreenBase {
+public class LoadingGame extends LoadingScreenBase implements MapLoadingSubject {
 
     //Creating living and non-living objets
     MainCharacter mainCharacter;
@@ -31,6 +33,8 @@ public class LoadingGame extends LoadingScreenBase {
     Viewport viewport;
 
     private Box2dWorld box2dWorld;
+    private Array<MapLoadingObserver> mapLoadingObservers;
+
     private Array<InteractiveTileObject> interactiveTiledObjects;
 
 
@@ -47,6 +51,8 @@ public class LoadingGame extends LoadingScreenBase {
 
         //Load all frames to the asset manager
         assetManager.loadResource(AssetDescriptors.HERO_FRAMES);
+        interactiveTiledObjects = new Array<InteractiveTileObject>();
+        mapLoadingObservers     = new Array<MapLoadingObserver>();
 
         TextureAtlas heroTextureAtlas;
 
@@ -56,13 +62,16 @@ public class LoadingGame extends LoadingScreenBase {
 
                  mainCharacter = new Warrior(game);
 
-                    //Load the texture atlas into the asset Manager
-                    assetManager.loadResource(AssetDescriptors.WARRIOR_FRAMES);
+                 //Load the texture atlas into the asset Manager
+                 assetManager.loadResource(AssetDescriptors.WARRIOR_FRAMES);
 
                  heroTextureAtlas = assetManager.getResource(AssetDescriptors.WARRIOR_FRAMES);
 
-                //Put out the Texture atlas from the pool
-                TextureAtlasCommonContainer.addAllHeroTextureRegions(mainCharacter,heroTextureAtlas,WARRIOR_FRAME_ATLAS);
+                //Set all the movements for the current mainCharacter
+                AnimationManager.addAllHeroTextureRegions(
+                        mainCharacter,
+                        heroTextureAtlas,
+                        WARRIOR_FRAME_ATLAS);
 
                 break;
             case MAGE_SELECTED:
@@ -72,8 +81,11 @@ public class LoadingGame extends LoadingScreenBase {
                 assetManager.loadResource(AssetDescriptors.MAGE_FRAMES);
 
                 heroTextureAtlas = assetManager.getResource(AssetDescriptors.MAGE_FRAMES);
-                //Put out the Texture atlas from the pool
-                TextureAtlasCommonContainer.addAllHeroTextureRegions(mainCharacter,heroTextureAtlas,MAGE_FRAME_ATLAS);
+
+                //Set all the movements for the current mainCharacter
+                AnimationManager.addAllHeroTextureRegions(mainCharacter,
+                        heroTextureAtlas,
+                        MAGE_FRAME_ATLAS);
 
                 break;
             case HUNTER_SELECTED:
@@ -83,8 +95,10 @@ public class LoadingGame extends LoadingScreenBase {
 
                 heroTextureAtlas = assetManager.getResource(AssetDescriptors.HUNTER_FRAMES);
 
-                //Put out the Texture atlas from the pool
-                TextureAtlasCommonContainer.addAllHeroTextureRegions(mainCharacter,heroTextureAtlas,HUNTER_FRAME_ATLAS);
+                //Set all the movements for the current mainCharacter
+                AnimationManager.addAllHeroTextureRegions(mainCharacter,
+                        heroTextureAtlas,
+                        HUNTER_FRAME_ATLAS);
 
                 break;
             default:
@@ -92,20 +106,15 @@ public class LoadingGame extends LoadingScreenBase {
                 mainCharacter = new Warrior(game);
         }
 
-        interactiveTiledObjects = new Array<>();
+        //Observers
+        this.addObserver(MapManager.getInstance());
     }
 
     // == public methods ==
     @Override
     public void show() {
         super.show();
-
-        //Parse .tmx map, fill the world with bodies, and also set living and non-living object
-        //to point to particular bodies in order to have a control of all the bodies.
-        TilemapHandler.createMap(box2dWorld.getWorld(),AssetPaths.LEVEL1,
-                //Living and Non-Living objects
-                mainCharacter,
-                interactiveTiledObjects);
+        notifyAllMembers();
     }
 
     @Override
@@ -132,4 +141,25 @@ public class LoadingGame extends LoadingScreenBase {
         super.dispose();
     }
 
+    @Override
+    public void addObserver(MapLoadingObserver mapLoadingObserver) {
+        this.mapLoadingObservers.add(mapLoadingObserver);
+    }
+
+    @Override
+    public void removeObserver(MapLoadingObserver mapLoadingObserver) {
+        this.mapLoadingObservers.removeValue(mapLoadingObserver,true);
+    }
+
+    @Override
+    public void removeAllObservers() {
+        this.mapLoadingObservers.removeAll(mapLoadingObservers, true);
+    }
+
+    @Override
+    public void notifyAllMembers() {
+        for(MapLoadingObserver observer: mapLoadingObservers){
+            observer.onNotify(game, mainCharacter,interactiveTiledObjects);
+        }
+    }
 }

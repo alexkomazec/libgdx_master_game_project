@@ -93,6 +93,16 @@ public class GameRenderer implements Disposable {
 
     // == public methods ==
     public void render(float delta) {
+        float[] camera_position_offset = new float[2];
+        /*
+         * camera_position[0] => x
+         * camera_position[1] => y
+         */
+        camera_position_offset = ViewPortConfiguration.checkBoundariesCollision(mainCharacter);
+
+        float camera_x_pos = mainCharacter.b2body.getPosition().x + camera_position_offset[0];
+        float camera_y_pos = mainCharacter.b2body.getPosition().y + camera_position_offset[1];
+
 
         ViewPortConfiguration.calculateViewport(20, 20);
 
@@ -105,7 +115,8 @@ public class GameRenderer implements Disposable {
         //Start the box2d world
         box2dWorld.getWorld().step(1/60f,6,2);
 
-        camera.position.set(mainCharacter.b2body.getPosition().x, mainCharacter.b2body.getPosition().y,0);
+        camera.position.set(camera_x_pos, camera_y_pos,0);
+        ViewPortConfiguration.checkBoundariesCollision(mainCharacter);
         camera.update();
 
         if(ENABLE_IT == cameraDebugging_flag ){

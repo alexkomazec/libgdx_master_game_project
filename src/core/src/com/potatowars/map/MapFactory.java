@@ -29,7 +29,6 @@ public class MapFactory {
 
     //Map list
     private static Hashtable<MapName, Map> mapList = new Hashtable<MapName, Map>();
-    private static MapName currnetMap = MapName.LEVEL0;
 
     public enum MapName{
         LEVEL0,
@@ -40,14 +39,22 @@ public class MapFactory {
         LEVEL5,
     }
 
+    public static Map getCurrentMap(MapName mapName){
+        return getMap( mapName,null, null);
+    }
+
     public static Map getMap(MapName mapType,MainCharacter mainCharacter, Array<InteractiveTileObject> interactiveTiledObjects){
         Map map = null;
+
+        if(null == mainCharacter || null == interactiveTiledObjects){
+            Gdx.app.debug(CLASS_NAME, "null == mainCharacter || null == interactiveTiledObjects");
+        }
 
         switch(mapType){
             case LEVEL1:
                 map = mapList.get(LEVEL1);
                 if( map == null ){
-
+                    Gdx.app.debug(CLASS_NAME, "map == null LEVEL1");
                     map = processMap(LEVEL1,mainCharacter,interactiveTiledObjects);
 
                 }
@@ -55,7 +62,7 @@ public class MapFactory {
             case LEVEL2:
                 map = mapList.get(LEVEL2);
                 if( map == null ){
-
+                    Gdx.app.debug(CLASS_NAME, "map == null LEVEL2");
                     map = processMap(LEVEL2,mainCharacter,interactiveTiledObjects);
 
                 }
@@ -64,7 +71,7 @@ public class MapFactory {
             case LEVEL3:
                 map = mapList.get(LEVEL3);
                 if( map == null ){
-
+                    Gdx.app.debug(CLASS_NAME, "map == null LEVEL3");
                     map = processMap(LEVEL3,mainCharacter,interactiveTiledObjects);
 
                 }
@@ -72,7 +79,7 @@ public class MapFactory {
             case LEVEL4:
                 map = mapList.get(LEVEL4);
                 if( map == null ){
-
+                    Gdx.app.debug(CLASS_NAME, "map == null LEVEL4");
                     map = processMap(LEVEL4,mainCharacter,interactiveTiledObjects);
 
                 }
@@ -80,7 +87,7 @@ public class MapFactory {
             case LEVEL5:
                 map = mapList.get(LEVEL5);
                 if( map == null ){
-
+                    Gdx.app.debug(CLASS_NAME, "map == null LEVEL5");
                     map = processMap(LEVEL5,mainCharacter,interactiveTiledObjects);
 
                 }

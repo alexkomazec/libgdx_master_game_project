@@ -19,7 +19,7 @@ import static com.potatowars.map.MapFactory.MapName.LEVEL5;
 public class MapManager implements MapLoadingObserver{
 
     private static final String CLASS_NAME = MapManager.class.getSimpleName();
-    private static final MapFactory.MapName currnetMap = LEVEL0;
+    private static MapFactory.MapName currnetMap = LEVEL0;
 
     private static MapManager _instance = null;
 
@@ -47,22 +47,34 @@ public class MapManager implements MapLoadingObserver{
         }
     }
 
+    public static Map getCurrentMap(){
+        return MapFactory.getCurrentMap(currnetMap);
+    }
+
     private MapFactory.MapName getNextMap(){
             switch(currnetMap) {
 
                 case LEVEL0:
                 case LEVEL5:
-                    return LEVEL1;
+                    currnetMap = LEVEL1;
+                    break;
                 case LEVEL1:
-                    return LEVEL2;
+                    currnetMap = LEVEL2;
+                    break;
                 case LEVEL2:
-                    return LEVEL3;
+                    currnetMap = LEVEL3;
+                    break;
                 case LEVEL3:
-                    return LEVEL4;
+                    currnetMap = LEVEL4;
+                    break;
                 case LEVEL4:
-                    return LEVEL5;
+                    currnetMap = LEVEL5;
+                    break;
                 default:
-                    return LEVEL0;
+                    currnetMap = LEVEL0;
+                    break;
             }
+            return currnetMap;
     }
+
 }

@@ -1,7 +1,11 @@
 package com.potatowars.menu;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.viewport.Viewport;
+import com.potatowars.map.MapManager;
+import com.potatowars.map.mapList.Map;
+import com.potatowars.sprites.characters.playableCharacters.MainCharacter;
 
 public class ViewPortConfiguration {
 
@@ -59,18 +63,59 @@ public class ViewPortConfiguration {
         Gdx.app.debug(CLASS_NAME, " Physical measure: (" + physicalWidth + "," + physicalHeight + ")" );
     }
 
-    private boolean checkBoundariesCollision(float viewPortWidth, float viewPortHeight){
+    public static float[] checkBoundariesCollision(MainCharacter mainCharacter){
 
-        /*float x_position = debugCameraController.getPosition().x;
-        float y_position = debugCameraController.getPosition().y;
+        float x_position = mainCharacter.getB2Body_positionX();
+        float y_position = mainCharacter.getB2Body_positionY();
+        System.out.println("x" + x_position);
+        System.out.println("y" + y_position);
+
+        float[] camera_position_offset = new float[2];
+        /*
+        * camera_position[0] => x
+        * camera_position[1] => y
+        */
+
+        Map map = MapManager.getCurrentMap();
+
+        float rightVisibleArea  =   x_position + viewportWidth/2;
+        float leftVisibleArea   =   x_position - viewportWidth/2;
+        float aboveVisibleArea  =   y_position + viewportHeight/2;
+        float belowVisibleArea  =   y_position - viewportHeight/2;
+        final float mapWidth    =   (float) ((int)(map.getTiledMap().getProperties().get("width")));
+        final float mapHeight   =   (float) ((int)(map.getTiledMap().getProperties().get("height")));
+
+        float rightCameraOffset     =   mapWidth - rightVisibleArea;
+        float leftCameraOffset      =   0 - leftVisibleArea;
+        float aboveCameraOffset     =   mapHeight - aboveVisibleArea;
+        float belowCameraOffset     =   0 - belowVisibleArea;
 
         //Check if the camera area is collided to the right map bound
-        if( (int)(x_position + viewPortWidth/2) >= (int)map.getProperties().get("width")){
-            Gdx.app.debug(TAG, "Yes!" );
-        }else{
+        if(rightCameraOffset <= 0) {
+            camera_position_offset[0] = rightCameraOffset;
+            camera_position_offset[1] = 0;
+        }
 
-        }*/
-        return true;
+        if(leftCameraOffset>=0){
+            camera_position_offset[0] = leftCameraOffset;
+            camera_position_offset[1] = 0;
+        }
+
+        if(aboveCameraOffset<=0){
+            camera_position_offset[0] = 0;
+            camera_position_offset[1] = aboveCameraOffset;
+        }
+
+        if(belowCameraOffset>=0){
+            camera_position_offset[0] = 0;
+            camera_position_offset[1] = belowCameraOffset;
+        }
+
+
+
+        Gdx.app.debug(CLASS_NAME, "Yes!" );
+
+        return camera_position_offset;
     }
 
     public static void setupPhysicalSize(){

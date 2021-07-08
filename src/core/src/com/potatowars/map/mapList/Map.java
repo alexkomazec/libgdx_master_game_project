@@ -50,4 +50,8 @@ public class Map {
 
         platform_objectLayer = this.tiledMap.getLayers().get(STATIC_PLATFORM);
     }
+
+    public TiledMap getTiledMap() {
+        return tiledMap;
+    }
 }

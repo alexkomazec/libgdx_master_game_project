@@ -41,6 +41,7 @@ public class Hud implements Disposable {
     public Hud(SpriteBatch sb, MainCharacter mainCharacter, EnvironmentalDifficulty environmentalDifficulty)
     {
         viewport = new FitViewport(GameConfig.PHYSICAL_WIDTH, GameConfig.PHYSICAL_HEIGHT, new OrthographicCamera());
+
         stage = new Stage(viewport,sb);
         this.environmentalDifficulty = environmentalDifficulty;
 

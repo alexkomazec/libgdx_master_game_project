@@ -15,4 +15,8 @@ public class Damage {
     public void setDamage(int damage) {
         this.damage = damage;
     }
+
+    public void increaseDamage(int bonusDamage){
+        this.damage += bonusDamage;
+    }
 }

@@ -6,6 +6,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.potatowars.PotatoWars;
 import com.potatowars.config.GameConfig;
 import com.potatowars.menu.Background;
+import com.potatowars.sprites.LevelUpSystem;
 import com.potatowars.sprites.characters.playableCharacters.MainCharacter;
 import com.potatowars.sprites.commonParameters.EnvironmentalDifficulty;
 
@@ -17,9 +18,13 @@ public class GameController {
     //private Hud hud;
     private static boolean debug_walking;
     private EnvironmentalDifficulty environmentalDifficulty;
+
+    LevelUpSystem levelUpSystem;
+
     // == constructors ==
     public GameController(MainCharacter mainCharacter, PotatoWars game, /*Hud hud,*/ EnvironmentalDifficulty environmentalDifficulty) {
         this.game = game;
+        levelUpSystem = LevelUpSystem.getInstance();
         //this.hud = hud;
         this.environmentalDifficulty = environmentalDifficulty;
         init(mainCharacter);
@@ -53,18 +58,59 @@ public class GameController {
         //control our player using immediate impulses
         if (Gdx.input.isKeyJustPressed(Input.Keys.P)){
             debug_walking = true;
+
         }
         if (Gdx.input.isKeyJustPressed(Input.Keys.O)){
             debug_walking = false;
         }
 
+        if (Gdx.input.isKeyJustPressed(Input.Keys.L))
+        {
+            levelUpSystem.addExperience(50);
+        }
+
+        if (Gdx.input.isKeyJustPressed(Input.Keys.H))
+        {
+            //Decrease HP
+            mainCharacter.modifyHP(10,false);
+        }
+
+        if (Gdx.input.isKeyJustPressed(Input.Keys.J))
+        {
+            //Increase HP
+            mainCharacter.modifyHP(10,true);
+        }
+
+        if (Gdx.input.isKeyJustPressed(Input.Keys.N))
+        {
+            //Decrease MP
+            mainCharacter.modifyMP(10,false);
+        }
+
+        if (Gdx.input.isKeyJustPressed(Input.Keys.M))
+        {
+            //Increase MP
+            mainCharacter.modifyMP(10,true);
+        }
+
+        if (Gdx.input.isKeyJustPressed(Input.Keys.Y))
+        {
+            //Decrease Gold
+            mainCharacter.modifyGold(10,false);
+        }
+
+        if (Gdx.input.isKeyJustPressed(Input.Keys.U))
+        {
+            //Increase Gold
+            mainCharacter.modifyGold(10,true);
+        }
+
+
+
         if(!debug_walking) {
-            if (Gdx.input.isKeyJustPressed(Input.Keys.UP))
+            if (Gdx.input.isKeyJustPressed(Input.Keys.UP)) {
                 mainCharacter.b2body.applyLinearImpulse(new Vector2(0f, 1000f), mainCharacter.b2body.getWorldCenter(), true);
-
-            //if (Gdx.input.isKeyJustPressed(Input.Keys.DOWN))
-            //    dummyHero.b2body.applyLinearImpulse(new Vector2(0f, -4f), dummyHero.b2body.getWorldCenter(), true);
-
+            }
             if (Gdx.input.isKeyPressed(Input.Keys.RIGHT) && mainCharacter.b2body.getLinearVelocity().x <= 2) {
                 mainCharacter.b2body.applyLinearImpulse(new Vector2(1000f, 0), mainCharacter.b2body.getWorldCenter(), true);
             }
@@ -85,6 +131,8 @@ public class GameController {
                 mainCharacter.b2body.applyLinearImpulse(new Vector2(-1000f, 0), mainCharacter.b2body.getWorldCenter(), true);
             }
         }
+
+
     }
 
     public Background getBackground() {

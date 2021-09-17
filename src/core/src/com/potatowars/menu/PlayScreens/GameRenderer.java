@@ -2,6 +2,7 @@ package com.potatowars.menu.PlayScreens;
 
 import com.badlogic.gdx.Application;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
@@ -9,11 +10,14 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.utils.Disposable;
 import com.badlogic.gdx.utils.Logger;
+import com.badlogic.gdx.utils.viewport.FitViewport;
+import com.badlogic.gdx.utils.viewport.Viewport;
 import com.potatowars.PotatoWars;
 import com.potatowars.assets.AssetDescriptors;
 import com.potatowars.assets.AssetManagmentHandler;
 import com.potatowars.assets.RegionNames;
 import com.potatowars.box2d.Box2dWorld;
+import com.potatowars.hud.PlayerHUD;
 import com.potatowars.menu.Background;
 import com.potatowars.menu.ViewPortConfiguration;
 import com.potatowars.sprites.characters.playableCharacters.MainCharacter;
@@ -52,20 +56,20 @@ public class GameRenderer implements Disposable {
 
     PotatoWars game;
 
-    Hud hud;
+    PlayerHUD hud;
 
     // == constructors ==
-    public GameRenderer(PotatoWars game, GameController controller, AssetManagmentHandler assetManager, Box2dWorld box2dWorld, MainCharacter mainCharacter, Hud hud) {
+    public GameRenderer(PotatoWars game, GameController controller, AssetManagmentHandler assetManager, Box2dWorld box2dWorld, MainCharacter mainCharacter) {
         this.controller = controller;
         this.mainCharacter = mainCharacter;
         this.game   =   game;
-        this.hud    =   hud;
+
         init(assetManager,box2dWorld);
     }
 
     // == init ==
     private void init(AssetManagmentHandler assetManager,Box2dWorld box2dWorld) {
-        Gdx.app.setLogLevel(Application.LOG_NONE);
+        Gdx.app.setLogLevel(Application.LOG_ERROR);
 
         this.box2dWorld = box2dWorld;
 
@@ -75,6 +79,7 @@ public class GameRenderer implements Disposable {
                 ViewPortConfiguration.physicalWidth,
                 ViewPortConfiguration.physicalHeight
         );
+        this.hud    =   PlayerHUD.getInstance(camera,mainCharacter);
 
         batch = game.getBatch();
 
@@ -137,7 +142,8 @@ public class GameRenderer implements Disposable {
         batch.end();
 
         //Rendering HUD as a top layer
-        //game.getBatch().setProjectionMatrix(hud.stage.getCamera().combined);
+        game.getBatch().setProjectionMatrix(hud.getStage().getCamera().combined);
+        hud.render(delta);
         //hud.stage.draw();
 
         //renderGamePlay();

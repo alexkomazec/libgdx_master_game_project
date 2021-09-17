@@ -1,0 +1,29 @@
+Player:
+
+healthPoints can be modifed by:
+- by other enemies (from BattleSystem logic)    BattleSystem        informs player
+- by consumable inventory items (heal potions)  Invenotory          informs player
+- by consumable items (from the map)            Box2dWorld listener informs player
+- by leveling up                                LelvelingUpSys      informs player
+
+manaPoints can be modified by:
+- by consumable inventory items (mana potions)  Invenotory          informs player
+-by leveling up                                LelvelingUpSys      informs player
+
+armorPoints can be modified by:
+- by equipable invenotry items(armor)           Invenotory          informs player
+- by leveling up                                LelvelingUpSys      informs player
+
+damage can be modified by:
+- by equipable invenotry items(weapons)        Invenotory           informs player 
+- by leveling up                               LelvelingUpSys      informs player
+
+movementSpeed can be modified by:
+- / each class has unique movementSpeed
+
+atackSpeed can be modified by:
+- / each class has unique atackSpeed
+
+
+
+

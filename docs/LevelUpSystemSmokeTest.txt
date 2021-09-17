@@ -1,0 +1,9 @@
+LevelUpSystem smoke test:
+DONE    1 - Increase amount of experience that is less than level-up exp capacity EXAMPLE: LEVEL1 CAPACITY 100 | Increase exp by 10
+         Expected result: LEVEL1 -> LEVEL2, after 10 times.
+
+DONE    2 - Transition between levels. EXAMPLE: Current exp is 95% far from 0 and current level is N | Increase exp by 5% 
+         Expected result: LEVEL 1 -> LEVEL2, after 1 time.
+
+DONE   3 - Add more experience in amount more than level capicity
+         Expected result: Level 1 50/100 exp | increase exp by 60  => Result: Level 2 10/110

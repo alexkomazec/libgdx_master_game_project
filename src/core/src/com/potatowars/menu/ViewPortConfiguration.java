@@ -67,10 +67,10 @@ public class ViewPortConfiguration {
 
         float x_position = mainCharacter.getB2Body_positionX();
         float y_position = mainCharacter.getB2Body_positionY();
-        System.out.println("x" + x_position);
-        System.out.println("y" + y_position);
 
         float[] camera_position_offset = new float[2];
+        camera_position_offset[0] = 0;
+        camera_position_offset[1] = 0;
         /*
         * camera_position[0] => x
         * camera_position[1] => y
@@ -93,27 +93,23 @@ public class ViewPortConfiguration {
         //Check if the camera area is collided to the right map bound
         if(rightCameraOffset <= 0) {
             camera_position_offset[0] = rightCameraOffset;
-            camera_position_offset[1] = 0;
+            Gdx.app.error(CLASS_NAME, "rightCameraOffset" );
         }
 
         if(leftCameraOffset>=0){
             camera_position_offset[0] = leftCameraOffset;
-            camera_position_offset[1] = 0;
+            Gdx.app.error(CLASS_NAME, "leftCameraOffset" );
         }
 
         if(aboveCameraOffset<=0){
-            camera_position_offset[0] = 0;
             camera_position_offset[1] = aboveCameraOffset;
+            Gdx.app.error(CLASS_NAME, "aboveCameraOffset" );
         }
 
         if(belowCameraOffset>=0){
-            camera_position_offset[0] = 0;
             camera_position_offset[1] = belowCameraOffset;
+            Gdx.app.error(CLASS_NAME, "belowCameraOffset" );
         }
-
-
-
-        Gdx.app.debug(CLASS_NAME, "Yes!" );
 
         return camera_position_offset;
     }

@@ -7,15 +7,13 @@ public class GameConfig {
     */
     public static final float WORLD_BOX_SIZE = 16f;
 
-    /*  Box2d Scalling
-        INFO: Creating a body using dimensions of one tile means that a body will be WORLD_BOX_SIZE
-        meters high and WORLD_BOX_SIZE wide which can be astronomous mass that leads to heavy
-        bodies that move very slowly. So scalling to some normal height and weight is a solution
-    */
-    public static final float PPM = 16f; // pixels per meter
+    // == Box2d Scalling ==
+    //INFO: Creating a body with width 16 and height 16, in box2D world it is represented as 16 meters x 16 meters body
+    //      which is too heavy, so scalling is important part.
+    public static final float PPM = 16; // pixels per meter
 
-    /*--------------------------------------------------------------------------------------------*/
-    /*---------------------------------Screen dimensions------------------------------------------*/
+    public static final float WIDTH = 800f; //pixels
+    public static final float HEIGHT  = 416f; //pixels
 
     /* Physical dimensions of the screen */
     public static final float PHYSICAL_WIDTH = 1920f; //pixels
@@ -49,6 +47,17 @@ public class GameConfig {
     public static final int HERO_MANA = 100;
     public static final int HERO_ATTACK_SPEED = 100;
     public static final int HERO_MOVEMENT_SPEED = 100;
+
+    public static final int LEVEL_1_EXP_CAPACITY        = 100;
+    public static final int LEVEL_2_EXP_CAPACITY        = (int)(1.1*LEVEL_1_EXP_CAPACITY);
+    public static final int LEVEL_3_EXP_CAPACITY        = (int)(1.1*LEVEL_2_EXP_CAPACITY);
+    public static final int LEVEL_4_EXP_CAPACITY        = (int)(1.1*LEVEL_3_EXP_CAPACITY);
+    public static final int LEVEL_5_EXP_CAPACITY        = (int)(1.1*LEVEL_4_EXP_CAPACITY);
+    public static final int LEVEL_6_EXP_CAPACITY        = (int)(1.1*LEVEL_5_EXP_CAPACITY);
+    public static final int LEVEL_7_EXP_CAPACITY        = (int)(1.1*LEVEL_6_EXP_CAPACITY);
+    public static final int LEVEL_8_EXP_CAPACITY        = (int)(1.1*LEVEL_7_EXP_CAPACITY);
+    public static final int LEVEL_9_EXP_CAPACITY        = (int)(1.1*LEVEL_8_EXP_CAPACITY);
+    public static final int LEVEL_10_EXP_CAPACITY       = (int)(1.1*LEVEL_9_EXP_CAPACITY);
 
     // == Environmental difficulty
     public static final int SURVIVAL_DIFFICULTY = 100;

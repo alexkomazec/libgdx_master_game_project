@@ -23,8 +23,13 @@ public class Hunter extends MainCharacter {
 
         if(null != parametersPackage) {
             parametersPackage.getDamage().setDamage((int)(GameConfig.HERO_DPS*HUNTER_DMG_COEF));
+
             parametersPackage.getEnergyPoints().setHealthPoints((int)(GameConfig.HERO_HP*HUNTER_HP_COEF));
+            parametersPackage.getEnergyPoints().setHealthPointsCapacity((int)(GameConfig.HERO_HP*HUNTER_HP_COEF));
+
             parametersPackage.getEnergyPoints().setManaPoints((int)(GameConfig.HERO_MANA*HUNTER_MANA_COEF));
+            parametersPackage.getEnergyPoints().setManaPointsCapacity((int)(GameConfig.HERO_MANA*HUNTER_MANA_COEF));
+
             parametersPackage.getEnergyPoints().setArmorPoints((int)(GameConfig.HERO_ARMOR*HUNTER_ARMOR_COEF));
             parametersPackage.getSpeed().setAtackSpeed(GameConfig.HERO_ATTACK_SPEED);
             parametersPackage.getSpeed().setAtackSpeed((int)(GameConfig.HERO_MOVEMENT_SPEED*HUNTER_MOV_SPEED_COEF));

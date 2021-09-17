@@ -6,10 +6,6 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Logger;
-import com.badlogic.gdx.utils.viewport.Viewport;
-
-import javax.swing.text.View;
-
 
 public class DebugCameraController {
 

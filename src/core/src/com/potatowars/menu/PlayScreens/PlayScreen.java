@@ -1,12 +1,18 @@
 package com.potatowars.menu.PlayScreens;
 
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.utils.viewport.FitViewport;
+import com.badlogic.gdx.utils.viewport.Viewport;
 import com.potatowars.PotatoWars;
+import com.potatowars.box2d.Box2dBodyBuilder;
 import com.potatowars.box2d.Box2dWorld;
 import com.potatowars.config.GameConfig;
+import com.potatowars.hud.PlayerHUD;
 import com.potatowars.menu.EndGameScreens.EndLevelScreen;
 import com.potatowars.menu.MenuScreenBase;
 import com.potatowars.menu.ViewPortConfiguration;
+import com.potatowars.sprites.LevelUpSystem;
 import com.potatowars.sprites.characters.playableCharacters.MainCharacter;
 import com.potatowars.sprites.commonParameters.EnvironmentalDifficulty;
 
@@ -31,17 +37,31 @@ public class PlayScreen extends MenuScreenBase {
 
     private Box2dWorld box2dWorld;
 
+    LevelUpSystem levelUpSystem;
+
     //Hud
-    Hud hud;
+    //Hud hud;
+    PlayerHUD hud;
+
+    //World view
+    private OrthographicCamera camera;
+    private Viewport viewport;
+
 
     public PlayScreen(PotatoWars game, MainCharacter mainCharacter, Box2dWorld box2dWorld) {
         super(game);
         this.box2dWorld = box2dWorld;
         this.game = game;
         this.mainCharacter = mainCharacter;
+        levelUpSystem = LevelUpSystem.getInstance();
+        levelUpSystem.addObserver(mainCharacter);
+
+        camera = new OrthographicCamera();
+        viewport = new FitViewport(Box2dBodyBuilder.divideByPpm(GameConfig.GAME_WIDTH), Box2dBodyBuilder.divideByPpm(GameConfig.GAME_HEIGHT) ,camera);
 
         environmentalDifficultyGenerator = new EnvironmentalDifficulty(GameConfig.LEVEL1);
-
+        this.hud = PlayerHUD.getInstance(camera,mainCharacter);
+        mainCharacter.addObserver(hud.getStatusUI());
         //this.hud = new Hud(game.getBatch(),mainCharacter,environmentalDifficultyGenerator);
         //lifeTimer = nanosToMillis(nanoTime());
     }
@@ -55,7 +75,7 @@ public class PlayScreen extends MenuScreenBase {
     @Override
     public void show() {
         controller = new GameController(mainCharacter,game,/*hud,*/environmentalDifficultyGenerator);
-        renderer = new GameRenderer(game,controller,assetManager,box2dWorld, mainCharacter,hud);
+        renderer = new GameRenderer(game,controller,assetManager,box2dWorld, mainCharacter);
     }
 
     @Override

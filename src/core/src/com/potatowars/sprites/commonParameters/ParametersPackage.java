@@ -1,13 +1,19 @@
 package com.potatowars.sprites.commonParameters;
 
+import com.potatowars.sprites.LevelUpSystem;
+
 public class ParametersPackage {
 
-    ShapeArea area;
-    ShapePosition position;
-    CommonStates states;
-    EnergyPoints energyPoints;
-    Damage damage;
-    Speed speed;
+    private ShapeArea area;
+    private ShapePosition position;
+    private CommonStates states;
+    private EnergyPoints energyPoints;
+    private Damage damage;
+    private Speed speed;
+
+    LevelUpSystem.LEVEL level;
+    private int exp;
+    private int gold;
 
     public ParametersPackage(){
         //Physics paramters
@@ -21,6 +27,9 @@ public class ParametersPackage {
         //attack parameters
         damage = new Damage();
         speed  = new Speed();
+
+        level  = LevelUpSystem.LEVEL.LEVEL1;
+        exp    = 0;
     }
 
 
@@ -76,5 +85,29 @@ public class ParametersPackage {
 
     public void setSpeed(Speed speed) {
         this.speed = speed;
+    }
+
+    public LevelUpSystem.LEVEL getLevel() {
+        return level;
+    }
+
+    public void setLevel(LevelUpSystem.LEVEL level) {
+        this.level = level;
+    }
+
+    public int getExp() {
+        return exp;
+    }
+
+    public void setExp(int exp) {
+        this.exp = exp;
+    }
+
+    public int getGold() {
+        return gold;
+    }
+
+    public void setGold(int gold) {
+        this.gold = gold;
     }
 }

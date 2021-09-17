@@ -1,0 +1,38 @@
+Notes:
+
+1. Method: Extracting Texture Atlasses
+    1.Get a texture atlas, get a name of the texture atlas
+    
+    LOOP:
+        2.Find an AtlasRegion from the Atlas
+        3.Put the AtlasRegion into Array of AtlasRegions
+    END LOOP
+
+    //////////////////////////////////////////////////////////
+    Called by program
+
+    Setting textures to the character moves
+
+    1.Get object name, get character moves
+    2.Search 
+
+
+
+1. Get TextureAtlass, get Texture atlass name
+
+2. Check the name of the texture Atlas
+
+
+
+Basic character
+protected Animation characterRun;
+
+    //Texture Regions and Atlas
+    protected TextureRegion characterStand;
+
+Main character 
+    protected TextureRegion characterJump;
+    characterRun = getRunningAnimation();
+    characterStand = getTextureRegion(CommonStates.State.STANDING);
+    characterJump =   getTextureRegion(CommonStates.State.JUMPING);
+    setRegion(characterJump);

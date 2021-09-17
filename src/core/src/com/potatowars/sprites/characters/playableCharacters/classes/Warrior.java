@@ -24,10 +24,15 @@ public class Warrior extends MainCharacter {
 
         if(null != parametersPackage) {
             parametersPackage.getDamage().setDamage((int)(GameConfig.HERO_DPS*WARRIOR_DMG_COEF));
+
             parametersPackage.getEnergyPoints().setHealthPoints((int)(GameConfig.HERO_HP*WARRIOR_HP_COEF));
+            parametersPackage.getEnergyPoints().setHealthPointsCapacity((int)(GameConfig.HERO_HP*WARRIOR_HP_COEF));
+
             parametersPackage.getEnergyPoints().setManaPoints((int)(GameConfig.HERO_MANA*WARRIOR_MANA_COEF));
+            parametersPackage.getEnergyPoints().setManaPointsCapacity((int)(GameConfig.HERO_MANA*WARRIOR_MANA_COEF));
+
             parametersPackage.getEnergyPoints().setArmorPoints((int)(GameConfig.HERO_ARMOR*WARRIOR_ARMOR_COEF));
-            parametersPackage.getSpeed().setAtackSpeed(GameConfig.HERO_ATTACK_SPEED);
+            //parametersPackage.getSpeed().setAtackSpeed(GameConfig.HERO_ATTACK_SPEED);
             parametersPackage.getSpeed().setAtackSpeed((int)(GameConfig.HERO_MOVEMENT_SPEED*WARRIOR_MOV_SPEED_COEF));
         }
         else{

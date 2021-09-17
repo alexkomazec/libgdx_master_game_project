@@ -4,8 +4,6 @@ import com.badlogic.gdx.maps.MapLayer;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.potatowars.sprites.characters.playableCharacters.MainCharacter;
 
-import sun.applet.Main;
-
 public class Map {
 
     TiledMap tiledMap = null;
